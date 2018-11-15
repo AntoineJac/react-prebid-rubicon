@@ -1,0 +1,52 @@
+language: node_js
+node_js:
+  - node
+script: echo "Running tests against $(node -v)..."
+
+before_install:
+- npm update
+
+install:
+- npm install
+- npm run build
+
+git:
+  depth: false
+cache:
+  directories:
+    - node_modules
+
+jobs:
+  include:
+    - stage: Produce Coverage
+      node_js: node
+      script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+    - stage: Deploy
+      before_deploy:  
+      - npm run postBuild
+      - git checkout --
+      # sh ./push.sh
+      deploy:
+        # Deploy Github
+        - provider: pages
+          skip-cleanup: true
+          target-branch: readyToDeploy
+          github-token: $GITHUB_TOKEN
+          keep-history: true
+          on:
+            branch: master
+        # Deploy Surge
+        - provider: surge
+          skip_cleanup: true
+          domain: react-prebid-rubicon.surge.sh  
+          on:
+            branch: deploy
+        # Deploy Github
+        - provider: npm
+          email: $NPM_EMAIL
+          api_key: $NPM_TOKEN
+          skip_cleanup: true
+          on:
+            branch: deploy
+            repo: AntoineJac/react-prebid-rubicon
+
