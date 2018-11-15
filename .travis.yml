@@ -21,7 +21,8 @@ jobs:
     - stage: Produce Coverage
       node_js: node
       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-    - stage: Deploy
+    - stage: Deploy on Github deploy branch
+      if: branch = master
       before_deploy:  
       - npm run postBuild
       - git checkout --
@@ -34,7 +35,14 @@ jobs:
           github-token: $GITHUB_TOKEN
           keep-history: true
           on:
-            branch: master
+            branch: master             
+    - stage: Deploy on NPM 
+      if: branch = deploy
+      before_deploy:  
+      - npm run postBuild
+      - git checkout --
+      # sh ./push.sh
+      deploy:
         # Deploy Surge
         - provider: surge
           skip_cleanup: true
@@ -49,4 +57,3 @@ jobs:
           on:
             branch: deploy
             repo: AntoineJac/react-prebid-rubicon
-
