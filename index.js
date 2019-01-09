@@ -161,30 +161,30 @@ module.exports = (function(e) {
     function(e, t, r) {
         'use strict';
         Object.defineProperty(t, '__esModule', { value: !0 });
-        var n = (function(e) {
-            return e && e.__esModule ? e : { default: e };
-        })(r(1));
-        t.default = n.default.shape({
-            id: n.default.string.isRequired,
-            path: n.default.string,
-            collapseEmptyDiv: n.default.arrayOf(n.default.bool),
-            targeting: n.default.object,
-            sizes: n.default.oneOfType([
-                n.default.oneOfType([n.default.string, n.default.arrayOf(n.default.number)]),
-                n.default.arrayOf(n.default.oneOfType([n.default.string, n.default.arrayOf(n.default.number)]))
+        var n,
+            i = r(1),
+            o = (n = i) && n.__esModule ? n : { default: n };
+        t.default = o.default.shape({
+            id: o.default.string.isRequired,
+            path: o.default.string,
+            collapseEmptyDiv: o.default.arrayOf(o.default.bool),
+            targeting: o.default.object,
+            sizes: o.default.oneOfType([
+                o.default.oneOfType([o.default.string, o.default.arrayOf(o.default.number)]),
+                o.default.arrayOf(o.default.oneOfType([o.default.string, o.default.arrayOf(o.default.number)]))
             ]),
-            sizeMappingName: n.default.string,
-            prebid: n.default.arrayOf(
-                n.default.shape({
-                    mediaTypes: n.default.objectOf(
-                        n.default.shape({ sizes: n.default.arrayOf(n.default.arrayOf(n.default.number)) })
+            sizeMappingName: o.default.string,
+            prebid: o.default.arrayOf(
+                o.default.shape({
+                    mediaTypes: o.default.objectOf(
+                        o.default.shape({ sizes: o.default.arrayOf(o.default.arrayOf(o.default.number)) })
                     ).isRequired,
-                    bids: n.default.arrayOf(
-                        n.default.shape({
-                            bidder: n.default.string.isRequired,
-                            params: n.default.object,
-                            labelAny: n.default.arrayOf(n.default.string),
-                            labelAll: n.default.arrayOf(n.default.string)
+                    bids: o.default.arrayOf(
+                        o.default.shape({
+                            bidder: o.default.string.isRequired,
+                            params: o.default.object,
+                            labelAny: o.default.arrayOf(o.default.string),
+                            labelAll: o.default.arrayOf(o.default.string)
                         })
                     ).isRequired
                 })
@@ -194,10 +194,10 @@ module.exports = (function(e) {
     function(e, t, r) {
         'use strict';
         Object.defineProperty(t, '__esModule', { value: !0 });
-        var n = (function(e) {
-            return e && e.__esModule ? e : { default: e };
-        })(r(0));
-        t.default = n.default.createContext(function() {});
+        var n,
+            i = r(0),
+            o = (n = i) && n.__esModule ? n : { default: n };
+        t.default = o.default.createContext(function() {});
     },
     function(e, t, r) {
         'use strict';
