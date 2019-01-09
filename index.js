@@ -263,7 +263,7 @@ module.exports = (function(e) {
                         return this;
                     };
                     var g = Object.getPrototypeOf,
-                        b = g && g(g(R([])));
+                        b = g && g(g(z([])));
                     b && b !== i && o.call(b, u) && (m = b);
                     var w = (E.prototype = S.prototype = Object.create(m));
                     (j.prototype = w.constructor = E),
@@ -320,7 +320,7 @@ module.exports = (function(e) {
                                 }
                             );
                         }),
-                        (c.values = R),
+                        (c.values = z),
                         (T.prototype = {
                             constructor: T,
                             reset: function(e) {
@@ -430,7 +430,7 @@ module.exports = (function(e) {
                             },
                             delegateYield: function(e, t, r) {
                                 return (
-                                    (this.delegate = { iterator: R(e), resultName: t, nextLoc: r }),
+                                    (this.delegate = { iterator: z(e), resultName: t, nextLoc: r }),
                                     'next' === this.method && (this.arg = n),
                                     v
                                 );
@@ -448,7 +448,7 @@ module.exports = (function(e) {
                                 if (n === h) throw new Error('Generator is already running');
                                 if (n === y) {
                                     if ('throw' === i) throw o;
-                                    return z();
+                                    return R();
                                 }
                                 for (r.method = i, r.arg = o; ; ) {
                                     var a = r.delegate;
@@ -569,7 +569,7 @@ module.exports = (function(e) {
                 function T(e) {
                     (this.tryEntries = [{ tryLoc: 'root' }]), e.forEach(M, this), this.reset(!0);
                 }
-                function R(e) {
+                function z(e) {
                     if (e) {
                         var t = e[u];
                         if (t) return t.call(e);
@@ -584,9 +584,9 @@ module.exports = (function(e) {
                             return (i.next = i);
                         }
                     }
-                    return { next: z };
+                    return { next: R };
                 }
-                function z() {
+                function R() {
                     return { value: n, done: !0 };
                 }
             })(
@@ -992,8 +992,9 @@ module.exports = (function(e) {
                                                             case 3:
                                                                 (this.slots = {}),
                                                                     (this.gptSizeMappings = {}),
+                                                                    (this.sizePrebidMapping = {}),
                                                                     (this.queue = {});
-                                                            case 6:
+                                                            case 7:
                                                             case 'end':
                                                                 return t.stop();
                                                         }

@@ -78,6 +78,7 @@ export default class Advertising {
         ]);
         this.slots = {};
         this.gptSizeMappings = {};
+        this.sizePrebidMapping = {};
         this.queue = {};
     }
 
