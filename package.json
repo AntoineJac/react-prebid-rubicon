@@ -1,6 +1,6 @@
 {
   "name": "react-prebid-rubicon",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Library for ad placements with Prebid header bidding in React applications using Rubicon demand manager hosted solution",
   "main": "index.js",
   "esnext": "index-esnext.js",

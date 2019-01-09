@@ -176,13 +176,11 @@ export default class Advertising {
         return sizeMappingName && this.gptSizeMappings[sizeMappingName] ? this.gptSizeMappings[sizeMappingName] : null;
     }
 
-    [getPrebidSizeMapping]() {        
+    [getPrebidSizeMapping]() {
         this.config.slots.forEach(({ id, sizeMappingName }) => {
             if (this[getGptSizeMapping](sizeMappingName)) {
-                var tempObj = this.config.sizeMappings[sizeMappingName];
-                Object.keys(tempObj).forEach(function(key) {
-                    tempObj[key].minViewPort = tempObj[key].viewPortSize;
-                });
+                const tempObj = this.config.sizeMappings[sizeMappingName];
+                Object.keys(tempObj).forEach(key => (tempObj[key].minViewPort = tempObj[key].viewPortSize));
                 this.sizePrebidMapping[id] = this.config.sizeMappings[sizeMappingName];
             }
         });

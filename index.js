@@ -246,8 +246,8 @@ module.exports = (function(e) {
                     o = i.hasOwnProperty,
                     a = 'function' == typeof Symbol ? Symbol : {},
                     u = a.iterator || '@@iterator',
-                    l = a.asyncIterator || '@@asyncIterator',
-                    s = a.toStringTag || '@@toStringTag',
+                    s = a.asyncIterator || '@@asyncIterator',
+                    l = a.toStringTag || '@@toStringTag',
                     f = 'object' === t(e),
                     c = r.regeneratorRuntime;
                 if (c) f && (e.exports = c);
@@ -262,22 +262,22 @@ module.exports = (function(e) {
                     m[u] = function() {
                         return this;
                     };
-                    var b = Object.getPrototypeOf,
-                        g = b && b(b(R([])));
-                    g && g !== i && o.call(g, u) && (m = g);
+                    var g = Object.getPrototypeOf,
+                        b = g && g(g(R([])));
+                    b && b !== i && o.call(b, u) && (m = b);
                     var w = (E.prototype = S.prototype = Object.create(m));
-                    (P.prototype = w.constructor = E),
-                        (E.constructor = P),
-                        (E[s] = P.displayName = 'GeneratorFunction'),
+                    (j.prototype = w.constructor = E),
+                        (E.constructor = j),
+                        (E[l] = j.displayName = 'GeneratorFunction'),
                         (c.isGeneratorFunction = function(e) {
                             var t = 'function' == typeof e && e.constructor;
-                            return !!t && (t === P || 'GeneratorFunction' === (t.displayName || t.name));
+                            return !!t && (t === j || 'GeneratorFunction' === (t.displayName || t.name));
                         }),
                         (c.mark = function(e) {
                             return (
                                 Object.setPrototypeOf
                                     ? Object.setPrototypeOf(e, E)
-                                    : ((e.__proto__ = E), s in e || (e[s] = 'GeneratorFunction')),
+                                    : ((e.__proto__ = E), l in e || (e[l] = 'GeneratorFunction')),
                                 (e.prototype = Object.create(w)),
                                 e
                             );
@@ -286,7 +286,7 @@ module.exports = (function(e) {
                             return { __await: e };
                         }),
                         _(x.prototype),
-                        (x.prototype[l] = function() {
+                        (x.prototype[s] = function() {
                             return this;
                         }),
                         (c.AsyncIterator = x),
@@ -299,7 +299,7 @@ module.exports = (function(e) {
                                   });
                         }),
                         _(w),
-                        (w[s] = 'Generator'),
+                        (w[l] = 'Generator'),
                         (w[u] = function() {
                             return this;
                         }),
@@ -321,8 +321,8 @@ module.exports = (function(e) {
                             );
                         }),
                         (c.values = R),
-                        (M.prototype = {
-                            constructor: M,
+                        (T.prototype = {
+                            constructor: T,
                             reset: function(e) {
                                 if (
                                     ((this.prev = 0),
@@ -332,7 +332,7 @@ module.exports = (function(e) {
                                     (this.delegate = null),
                                     (this.method = 'next'),
                                     (this.arg = n),
-                                    this.tryEntries.forEach(T),
+                                    this.tryEntries.forEach(q),
                                     !e)
                                 )
                                     for (var t in this)
@@ -361,15 +361,15 @@ module.exports = (function(e) {
                                         u = a.completion;
                                     if ('root' === a.tryLoc) return r('end');
                                     if (a.tryLoc <= this.prev) {
-                                        var l = o.call(a, 'catchLoc'),
-                                            s = o.call(a, 'finallyLoc');
-                                        if (l && s) {
+                                        var s = o.call(a, 'catchLoc'),
+                                            l = o.call(a, 'finallyLoc');
+                                        if (s && l) {
                                             if (this.prev < a.catchLoc) return r(a.catchLoc, !0);
                                             if (this.prev < a.finallyLoc) return r(a.finallyLoc);
-                                        } else if (l) {
+                                        } else if (s) {
                                             if (this.prev < a.catchLoc) return r(a.catchLoc, !0);
                                         } else {
-                                            if (!s) throw new Error('try statement without catch or finally');
+                                            if (!l) throw new Error('try statement without catch or finally');
                                             if (this.prev < a.finallyLoc) return r(a.finallyLoc);
                                         }
                                     }
@@ -411,7 +411,7 @@ module.exports = (function(e) {
                             finish: function(e) {
                                 for (var t = this.tryEntries.length - 1; t >= 0; --t) {
                                     var r = this.tryEntries[t];
-                                    if (r.finallyLoc === e) return this.complete(r.completion, r.afterLoc), T(r), v;
+                                    if (r.finallyLoc === e) return this.complete(r.completion, r.afterLoc), q(r), v;
                                 }
                             },
                             catch: function(e) {
@@ -421,7 +421,7 @@ module.exports = (function(e) {
                                         var n = r.completion;
                                         if ('throw' === n.type) {
                                             var i = n.arg;
-                                            T(r);
+                                            q(r);
                                         }
                                         return i;
                                     }
@@ -440,7 +440,7 @@ module.exports = (function(e) {
                 function O(e, t, r, n) {
                     var i = t && t.prototype instanceof S ? t : S,
                         o = Object.create(i.prototype),
-                        a = new M(n || []);
+                        a = new T(n || []);
                     return (
                         (o._invoke = (function(e, t, r) {
                             var n = d;
@@ -448,7 +448,7 @@ module.exports = (function(e) {
                                 if (n === h) throw new Error('Generator is already running');
                                 if (n === y) {
                                     if ('throw' === i) throw o;
-                                    return L();
+                                    return z();
                                 }
                                 for (r.method = i, r.arg = o; ; ) {
                                     var a = r.delegate;
@@ -465,19 +465,19 @@ module.exports = (function(e) {
                                         r.dispatchException(r.arg);
                                     } else 'return' === r.method && r.abrupt('return', r.arg);
                                     n = h;
-                                    var l = j(e, t, r);
-                                    if ('normal' === l.type) {
-                                        if (((n = r.done ? y : p), l.arg === v)) continue;
-                                        return { value: l.arg, done: r.done };
+                                    var s = P(e, t, r);
+                                    if ('normal' === s.type) {
+                                        if (((n = r.done ? y : p), s.arg === v)) continue;
+                                        return { value: s.arg, done: r.done };
                                     }
-                                    'throw' === l.type && ((n = y), (r.method = 'throw'), (r.arg = l.arg));
+                                    'throw' === s.type && ((n = y), (r.method = 'throw'), (r.arg = s.arg));
                                 }
                             };
                         })(e, r, a)),
                         o
                     );
                 }
-                function j(e, t, r) {
+                function P(e, t, r) {
                     try {
                         return { type: 'normal', arg: e.call(t, r) };
                     } catch (e) {
@@ -485,7 +485,7 @@ module.exports = (function(e) {
                     }
                 }
                 function S() {}
-                function P() {}
+                function j() {}
                 function E() {}
                 function _(e) {
                     ['next', 'throw', 'return'].forEach(function(t) {
@@ -500,10 +500,10 @@ module.exports = (function(e) {
                         function a() {
                             return new Promise(function(r, a) {
                                 !(function r(n, i, a, u) {
-                                    var l = j(e[n], e, i);
-                                    if ('throw' !== l.type) {
-                                        var s = l.arg,
-                                            f = s.value;
+                                    var s = P(e[n], e, i);
+                                    if ('throw' !== s.type) {
+                                        var l = s.arg,
+                                            f = l.value;
                                         return f &&
                                             'object' === (void 0 === f ? 'undefined' : t(f)) &&
                                             o.call(f, '__await')
@@ -516,10 +516,10 @@ module.exports = (function(e) {
                                                   }
                                               )
                                             : Promise.resolve(f).then(function(e) {
-                                                  (s.value = e), a(s);
+                                                  (l.value = e), a(l);
                                               }, u);
                                     }
-                                    u(l.arg);
+                                    u(s.arg);
                                 })(n, i, r, a);
                             });
                         }
@@ -540,7 +540,7 @@ module.exports = (function(e) {
                         }
                         return v;
                     }
-                    var i = j(r, e.iterator, t.arg);
+                    var i = P(r, e.iterator, t.arg);
                     if ('throw' === i.type) return (t.method = 'throw'), (t.arg = i.arg), (t.delegate = null), v;
                     var o = i.arg;
                     return o
@@ -556,18 +556,18 @@ module.exports = (function(e) {
                           (t.delegate = null),
                           v);
                 }
-                function q(e) {
+                function M(e) {
                     var t = { tryLoc: e[0] };
                     1 in e && (t.catchLoc = e[1]),
                         2 in e && ((t.finallyLoc = e[2]), (t.afterLoc = e[3])),
                         this.tryEntries.push(t);
                 }
-                function T(e) {
+                function q(e) {
                     var t = e.completion || {};
                     (t.type = 'normal'), delete t.arg, (e.completion = t);
                 }
-                function M(e) {
-                    (this.tryEntries = [{ tryLoc: 'root' }]), e.forEach(q, this), this.reset(!0);
+                function T(e) {
+                    (this.tryEntries = [{ tryLoc: 'root' }]), e.forEach(M, this), this.reset(!0);
                 }
                 function R(e) {
                     if (e) {
@@ -584,9 +584,9 @@ module.exports = (function(e) {
                             return (i.next = i);
                         }
                     }
-                    return { next: L };
+                    return { next: z };
                 }
-                function L() {
+                function z() {
                     return { value: n, done: !0 };
                 }
             })(
@@ -628,38 +628,38 @@ module.exports = (function(e) {
         Object.defineProperty(t, 'AdvertisingProvider', {
             enumerable: !0,
             get: function() {
-                return l(n).default;
+                return s(n).default;
             }
         });
         var i = r(12);
         Object.defineProperty(t, 'AdvertisingSlot', {
             enumerable: !0,
             get: function() {
-                return l(i).default;
+                return s(i).default;
             }
         });
         var o = r(5);
         Object.defineProperty(t, 'connectToAdServer', {
             enumerable: !0,
             get: function() {
-                return l(o).default;
+                return s(o).default;
             }
         });
         var a = r(2);
         Object.defineProperty(t, 'AdvertisingConfigPropType', {
             enumerable: !0,
             get: function() {
-                return l(a).default;
+                return s(a).default;
             }
         });
         var u = r(3);
-        function l(e) {
+        function s(e) {
             return e && e.__esModule ? e : { default: e };
         }
         Object.defineProperty(t, 'AdvertisingSlotConfigPropType', {
             enumerable: !0,
             get: function() {
-                return l(u).default;
+                return s(u).default;
             }
         });
     },
@@ -681,13 +681,13 @@ module.exports = (function(e) {
                 };
             })(),
             i = r(0),
-            o = l(i),
-            a = l(r(11)),
-            u = (l(r(1)), l(r(2)), l(r(4)));
-        function l(e) {
+            o = s(i),
+            a = s(r(11)),
+            u = (s(r(1)), s(r(2)), s(r(4)));
+        function s(e) {
             return e && e.__esModule ? e : { default: e };
         }
-        var s = (function(e) {
+        var l = (function(e) {
             function t(e) {
                 !(function(e, t) {
                     if (!(e instanceof t)) throw new TypeError('Cannot call a class as a function');
@@ -738,7 +738,7 @@ module.exports = (function(e) {
                 t
             );
         })();
-        (t.default = s), (s.defaultProps = { active: !0 });
+        (t.default = l), (l.defaultProps = { active: !0 });
     },
     function(e, t, r) {
         'use strict';
@@ -813,23 +813,24 @@ module.exports = (function(e) {
         }
         var a = Symbol('define GTP size mappings (private method)'),
             u = Symbol('get GPT size mapping (private method)'),
+            s = Symbol('get Prebid size mapping (private method)'),
             l = Symbol('define slots (private method)'),
-            s = Symbol('display slots (private method)'),
-            f = Symbol('setup Prebid (private method)'),
-            c = Symbol('teardown Prebid (private method)'),
-            d = Symbol('setup GPT (private method)'),
-            p = Symbol('teardown GPT (private method)'),
-            h = Symbol('call DFP slots in setup (private method)'),
-            y = Symbol('call DFP by activate (private method)'),
-            v = Symbol('setup custom events (private method)'),
-            m = Symbol('setup custom event (private method)'),
+            f = Symbol('display slots (private method)'),
+            c = Symbol('setup Prebid (private method)'),
+            d = Symbol('teardown Prebid (private method)'),
+            p = Symbol('setup GPT (private method)'),
+            h = Symbol('teardown GPT (private method)'),
+            y = Symbol('call DFP slots in setup (private method)'),
+            v = Symbol('call DFP by activate (private method)'),
+            m = Symbol('setup custom events (private method)'),
+            g = Symbol('setup custom event (private method)'),
             b = Symbol('teardown custom events (private method)'),
-            g = Symbol('with queue (private method)'),
-            w = Symbol('queue for GPT (private method)'),
-            O = Symbol('queue for Prebid (private method)'),
-            j = Symbol('set default config (private method)'),
-            S = Symbol('execute plugins (private method)'),
-            P = (function() {
+            w = Symbol('with queue (private method)'),
+            O = Symbol('queue for GPT (private method)'),
+            P = Symbol('queue for Prebid (private method)'),
+            S = Symbol('set default config (private method)'),
+            j = Symbol('execute plugins (private method)'),
+            E = (function() {
                 function e(t) {
                     var r = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : [];
                     !(function(e, t) {
@@ -839,10 +840,12 @@ module.exports = (function(e) {
                         (this.slots = {}),
                         (this.plugins = r),
                         (this.gptSizeMappings = {}),
+                        (this.sizePrebidMapping = {}),
+                        (this.prebidSizeMappings = {}),
                         (this.customEventCallbacks = {}),
                         (this.customEventHandlers = {}),
                         (this.queue = []),
-                        this[j]();
+                        this[S]();
                 }
                 return (
                     i(
@@ -860,10 +863,11 @@ module.exports = (function(e) {
                                                 a,
                                                 u,
                                                 l,
-                                                s,
-                                                c,
-                                                p,
-                                                y = this;
+                                                f,
+                                                d,
+                                                h,
+                                                v,
+                                                g = this;
                                             return regeneratorRuntime.wrap(
                                                 function(t) {
                                                     for (;;)
@@ -872,11 +876,11 @@ module.exports = (function(e) {
                                                                 return (
                                                                     (r = this.slots),
                                                                     (n = this.queue),
-                                                                    this[v](),
+                                                                    this[m](),
                                                                     (t.next = 4),
                                                                     Promise.all([
-                                                                        e[O](this[f].bind(this)),
-                                                                        e[w](this[d].bind(this))
+                                                                        e[P](this[c].bind(this)),
+                                                                        e[O](this[p].bind(this))
                                                                     ])
                                                                 );
                                                             case 4:
@@ -892,9 +896,9 @@ module.exports = (function(e) {
                                                                             r = e.customEventHandlers;
                                                                         Object.keys(r).forEach(function(e) {
                                                                             return (
-                                                                                y.customEventCallbacks[e] ||
-                                                                                    (y.customEventCallbacks[e] = {}),
-                                                                                (y.customEventCallbacks[e][t] = r[e])
+                                                                                g.customEventCallbacks[e] ||
+                                                                                    (g.customEventCallbacks[e] = {}),
+                                                                                (g.customEventCallbacks[e][t] = r[e])
                                                                             );
                                                                         });
                                                                     },
@@ -903,10 +907,10 @@ module.exports = (function(e) {
                                                                         u = void 0,
                                                                         t.prev = 10,
                                                                         l = n[Symbol.iterator]();
-                                                                    !(o = (s = l.next()).done);
+                                                                    !(o = (f = l.next()).done);
                                                                     o = !0
                                                                 )
-                                                                    (c = s.value), i(c);
+                                                                    (d = f.value), i(d);
                                                                 t.next = 18;
                                                                 break;
                                                             case 14:
@@ -932,24 +936,26 @@ module.exports = (function(e) {
                                                                 n.map(function(e) {
                                                                     return e.id;
                                                                 }),
-                                                                    (p = n.map(function(e) {
+                                                                    (h = n.map(function(e) {
                                                                         var t = e.id;
                                                                         return r[t];
                                                                     })),
-                                                                    e[w](
+                                                                    (v = this[s]()),
+                                                                    e[O](
                                                                         function() {
-                                                                            return e[O](function() {
+                                                                            return e[P](function() {
                                                                                 return window.pbjs.rp.requestBids({
-                                                                                    callback: y[h],
-                                                                                    gptSlotObjects: p
+                                                                                    callback: g[y],
+                                                                                    gptSlotObjects: h,
+                                                                                    sizeMappings: v
                                                                                 });
                                                                             });
                                                                         },
                                                                         setTimeout(function() {
-                                                                            y[h](p);
+                                                                            g[y](h);
                                                                         }, 2e3)
                                                                     );
-                                                            case 29:
+                                                            case 30:
                                                             case 'end':
                                                                 return t.stop();
                                                         }
@@ -979,8 +985,8 @@ module.exports = (function(e) {
                                                                     this[b](),
                                                                     (t.next = 3),
                                                                     Promise.all([
-                                                                        e[O](this[c].bind(this)),
-                                                                        e[w](this[p].bind(this))
+                                                                        e[P](this[d].bind(this)),
+                                                                        e[O](this[h].bind(this))
                                                                     ])
                                                                 );
                                                             case 3:
@@ -1015,48 +1021,48 @@ module.exports = (function(e) {
                                                   (r.customEventCallbacks[e][t] = n[e])
                                               );
                                           }),
-                                          e[w](
+                                          e[O](
                                               function() {
-                                                  return e[O](function() {
+                                                  return e[P](function() {
                                                       return window.pbjs.rp.requestBids({
-                                                          callback: r[y],
+                                                          callback: r[v],
                                                           gptSlotObjects: [i[t]]
                                                       });
                                                   });
                                               },
                                               setTimeout(function() {
-                                                  r[y]([i[t]]);
+                                                  r[v]([i[t]]);
                                               }, 2e3)
                                           ))
                                         : this.queue.push({ id: t, customEventHandlers: n });
                                 }
                             },
                             {
-                                key: h,
+                                key: y,
                                 value: function(e) {
                                     window.pbjs.adserverRequestSent ||
                                         ((window.pbjs.adserverRequestSent = !0), window.googletag.pubads().refresh(e));
                                 }
                             },
                             {
-                                key: y,
+                                key: v,
                                 value: function(e) {
                                     var t = e[0].getSlotElementId();
                                     window.pbjs[t] || ((window.pbjs[t] = !0), window.googletag.pubads().refresh(e));
                                 }
                             },
                             {
-                                key: v,
+                                key: m,
                                 value: function() {
                                     var e = this;
                                     this.config.customEvents &&
                                         Object.keys(this.config.customEvents).forEach(function(t) {
-                                            return e[m](t, e.config.customEvents[t]);
+                                            return e[g](t, e.config.customEvents[t]);
                                         });
                                 }
                             },
                             {
-                                key: m,
+                                key: g,
                                 value: function(e, t) {
                                     var r = t.eventMessagePrefix,
                                         n = t.divIdPrefix,
@@ -1067,8 +1073,8 @@ module.exports = (function(e) {
                                             var a = '' + (n || '') + o.substr(r.length),
                                                 u = i[e];
                                             if (u) {
-                                                var l = u[a];
-                                                l && l();
+                                                var s = u[a];
+                                                s && s();
                                             }
                                         }
                                     }),
@@ -1100,22 +1106,22 @@ module.exports = (function(e) {
                                             ) {
                                                 var a = i.value,
                                                     u = n(a, 2),
-                                                    l = u[0],
-                                                    s = u[1],
+                                                    s = u[0],
+                                                    l = u[1],
                                                     f = window.googletag.sizeMapping(),
                                                     c = !0,
                                                     d = !1,
                                                     p = void 0;
                                                 try {
                                                     for (
-                                                        var h, y = s[Symbol.iterator]();
+                                                        var h, y = l[Symbol.iterator]();
                                                         !(c = (h = y.next()).done);
                                                         c = !0
                                                     ) {
                                                         var v = h.value,
                                                             m = v.viewPortSize,
-                                                            b = v.sizes;
-                                                        f.addSize(m, b);
+                                                            g = v.sizes;
+                                                        f.addSize(m, g);
                                                     }
                                                 } catch (e) {
                                                     (d = !0), (p = e);
@@ -1126,7 +1132,7 @@ module.exports = (function(e) {
                                                         if (d) throw p;
                                                     }
                                                 }
-                                                this.gptSizeMappings[l] = f.build();
+                                                this.gptSizeMappings[s] = f.build();
                                             }
                                         } catch (e) {
                                             (t = !0), (r = e);
@@ -1147,6 +1153,26 @@ module.exports = (function(e) {
                                 }
                             },
                             {
+                                key: s,
+                                value: function() {
+                                    var e = this;
+                                    return (
+                                        this.config.slots.forEach(function(t) {
+                                            var r = t.id,
+                                                n = t.sizeMappingName;
+                                            if (e[u](n)) {
+                                                var i = e.config.sizeMappings[n];
+                                                Object.keys(i).forEach(function(e) {
+                                                    return (i[e].minViewPort = i[e].viewPortSize);
+                                                }),
+                                                    (e.sizePrebidMapping[r] = e.config.sizeMappings[n]);
+                                            }
+                                        }),
+                                        this.sizePrebidMapping
+                                    );
+                                }
+                            },
+                            {
                                 key: l,
                                 value: function() {
                                     var e = this;
@@ -1155,10 +1181,10 @@ module.exports = (function(e) {
                                             i = t.path,
                                             o = t.collapseEmptyDiv,
                                             a = t.targeting,
-                                            l = void 0 === a ? {} : a,
-                                            s = t.sizes,
+                                            s = void 0 === a ? {} : a,
+                                            l = t.sizes,
                                             f = t.sizeMappingName,
-                                            c = window.googletag.defineSlot(i || e.config.path, s, r),
+                                            c = window.googletag.defineSlot(i || e.config.path, l, r),
                                             d = e[u](f);
                                         d && c.defineSizeMapping(d),
                                             o &&
@@ -1180,14 +1206,14 @@ module.exports = (function(e) {
                                             y = void 0;
                                         try {
                                             for (
-                                                var v, m = Object.entries(l)[Symbol.iterator]();
+                                                var v, m = Object.entries(s)[Symbol.iterator]();
                                                 !(p = (v = m.next()).done);
                                                 p = !0
                                             ) {
-                                                var b = v.value,
-                                                    g = n(b, 2),
-                                                    w = g[0],
-                                                    O = g[1];
+                                                var g = v.value,
+                                                    b = n(g, 2),
+                                                    w = b[0],
+                                                    O = b[1];
                                                 c.setTargeting(w, O);
                                             }
                                         } catch (e) {
@@ -1204,9 +1230,9 @@ module.exports = (function(e) {
                                 }
                             },
                             {
-                                key: s,
+                                key: f,
                                 value: function() {
-                                    this[S]('displaySlots'),
+                                    this[j]('displaySlots'),
                                         this.config.slots.forEach(function(e) {
                                             var t = e.id;
                                             return window.googletag.display(t);
@@ -1214,21 +1240,21 @@ module.exports = (function(e) {
                                 }
                             },
                             {
-                                key: f,
-                                value: function() {
-                                    this[S]('setupPrebid');
-                                }
-                            },
-                            {
                                 key: c,
                                 value: function() {
-                                    this[S]('teardownPrebid');
+                                    this[j]('setupPrebid');
                                 }
                             },
                             {
                                 key: d,
                                 value: function() {
-                                    this[S]('setupGpt');
+                                    this[j]('teardownPrebid');
+                                }
+                            },
+                            {
+                                key: p,
+                                value: function() {
+                                    this[j]('setupGpt');
                                     var e = window.googletag.pubads(),
                                         t = this.config.targeting;
                                     this[a](), this[l]();
@@ -1237,8 +1263,8 @@ module.exports = (function(e) {
                                         o = void 0;
                                     try {
                                         for (
-                                            var u, f = Object.entries(t)[Symbol.iterator]();
-                                            !(r = (u = f.next()).done);
+                                            var u, s = Object.entries(t)[Symbol.iterator]();
+                                            !(r = (u = s.next()).done);
                                             r = !0
                                         ) {
                                             var c = u.value,
@@ -1251,7 +1277,7 @@ module.exports = (function(e) {
                                         (i = !0), (o = e);
                                     } finally {
                                         try {
-                                            !r && f.return && f.return();
+                                            !r && s.return && s.return();
                                         } finally {
                                             if (i) throw o;
                                         }
@@ -1259,17 +1285,17 @@ module.exports = (function(e) {
                                     e.disableInitialLoad(),
                                         e.enableSingleRequest(),
                                         window.googletag.enableServices(),
-                                        this[s]();
+                                        this[f]();
                                 }
                             },
                             {
-                                key: p,
+                                key: h,
                                 value: function() {
-                                    this[S]('teardownGpt'), window.googletag.destroySlots();
+                                    this[j]('teardownGpt'), window.googletag.destroySlots();
                                 }
                             },
                             {
-                                key: j,
+                                key: S,
                                 value: function() {
                                     this.config.prebid || (this.config.prebid = {}),
                                         this.config.metaData || (this.config.metaData = {}),
@@ -1277,7 +1303,7 @@ module.exports = (function(e) {
                                 }
                             },
                             {
-                                key: S,
+                                key: j,
                                 value: function(e) {
                                     var t = !0,
                                         r = !1,
@@ -1305,19 +1331,19 @@ module.exports = (function(e) {
                         ],
                         [
                             {
-                                key: w,
-                                value: function(t) {
-                                    return e[g](window.googletag.cmd, t);
-                                }
-                            },
-                            {
                                 key: O,
                                 value: function(t) {
-                                    return e[g](window.pbjs.que, t);
+                                    return e[w](window.googletag.cmd, t);
                                 }
                             },
                             {
-                                key: g,
+                                key: P,
+                                value: function(t) {
+                                    return e[w](window.pbjs.que, t);
+                                }
+                            },
+                            {
+                                key: w,
                                 value: function(e, t) {
                                     return new Promise(function(r) {
                                         return e.push(function() {
@@ -1331,7 +1357,7 @@ module.exports = (function(e) {
                     e
                 );
             })();
-        t.default = P;
+        t.default = E;
     },
     function(e, t, r) {
         'use strict';
@@ -1357,7 +1383,7 @@ module.exports = (function(e) {
         function u(e) {
             return e && e.__esModule ? e : { default: e };
         }
-        var l = (function(e) {
+        var s = (function(e) {
             function t() {
                 return (
                     (function(e, t) {
@@ -1401,6 +1427,6 @@ module.exports = (function(e) {
                 t
             );
         })();
-        (l.defaultProps = { customEventHandlers: {} }), (t.default = (0, a.default)(l));
+        (s.defaultProps = { customEventHandlers: {} }), (t.default = (0, a.default)(s));
     }
 ]);
