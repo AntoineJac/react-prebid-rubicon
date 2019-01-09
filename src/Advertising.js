@@ -1,5 +1,6 @@
 const defineGptSizeMappings = Symbol('define GTP size mappings (private method)');
 const getGptSizeMapping = Symbol('get GPT size mapping (private method)');
+const getPrebidSizeMapping = Symbol('get Prebid size mapping (private method)');
 const defineSlots = Symbol('define slots (private method)');
 const displaySlots = Symbol('display slots (private method)');
 const setupPrebid = Symbol('setup Prebid (private method)');
@@ -23,6 +24,8 @@ export default class Advertising {
         this.slots = {};
         this.plugins = plugins;
         this.gptSizeMappings = {};
+        this.sizePrebidMapping = {};
+        this.prebidSizeMappings = {};
         this.customEventCallbacks = {};
         this.customEventHandlers = {};
         this.queue = [];
@@ -51,12 +54,14 @@ export default class Advertising {
         }
         const divIds = queue.map(({ id }) => id);
         const selectedSlots = queue.map(({ id }) => slots[id]);
+        const prebidSizeMappings = this[getPrebidSizeMapping]();
         Advertising[queueForGPT](
             () =>
                 Advertising[queueForPrebid](() =>
                     window.pbjs.rp.requestBids({
                         callback: this[callAdserverSetup],
-                        gptSlotObjects: selectedSlots
+                        gptSlotObjects: selectedSlots,
+                        sizeMappings: prebidSizeMappings
                     })
                 ),
             setTimeout(() => {
@@ -169,6 +174,19 @@ export default class Advertising {
 
     [getGptSizeMapping](sizeMappingName) {
         return sizeMappingName && this.gptSizeMappings[sizeMappingName] ? this.gptSizeMappings[sizeMappingName] : null;
+    }
+
+    [getPrebidSizeMapping]() {        
+        this.config.slots.forEach(({ id, sizeMappingName }) => {
+            if (this[getGptSizeMapping](sizeMappingName)) {
+                var tempObj = this.config.sizeMappings[sizeMappingName];
+                Object.keys(tempObj).forEach(function(key) {
+                    tempObj[key].minViewPort = tempObj[key].viewPortSize;
+                });
+                this.sizePrebidMapping[id] = this.config.sizeMappings[sizeMappingName];
+            }
+        });
+        return this.sizePrebidMapping;
     }
 
     [defineSlots]() {
