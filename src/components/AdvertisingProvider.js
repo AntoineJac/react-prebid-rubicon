@@ -7,12 +7,18 @@ import AdvertisingContext from '../AdvertisingContext';
 export default class AdvertisingProvider extends Component {
     constructor(props) {
         super(props);
-        this.advertising = this.props.active ? new Advertising(props.config, props.plugins) : null;
-        this.activate = this.props.active ? this.advertising.activate.bind(this.advertising) : () => {};
+        this.advertising = new Advertising(props.config, props.plugins);
+        this.activate = this.advertising.activate.bind(this.advertising);
     }
 
     componentDidMount() {
-        if (this.advertising) {
+        if (this.props.active) {
+            this.advertising.setup();
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.active) {
             this.advertising.setup();
         }
     }
@@ -24,7 +30,8 @@ export default class AdvertisingProvider extends Component {
     }
 
     render() {
-        return <AdvertisingContext.Provider value={this.activate}>{this.props.children}</AdvertisingContext.Provider>;
+        const active = this.props.active;
+        return <AdvertisingContext.Provider value={{activate: this.activate, active: active}}>{this.props.children}</AdvertisingContext.Provider>;
     }
 }
 
