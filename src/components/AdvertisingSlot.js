@@ -14,7 +14,7 @@ class AdvertisingSlot extends Component {
         if (active) {
             activate(id, customEventHandlers);
         }
-    }       
+    }
     render() {
         const { id, style, className, children } = this.props;
         return <div id={id} style={style} className={className} children={children} />;
@@ -27,12 +27,13 @@ AdvertisingSlot.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     activate: PropTypes.func.isRequired,
-    active: PropTypes.bool.isRequired,
+    active: PropTypes.bool,
     customEventHandlers: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
 AdvertisingSlot.defaultProps = {
-    customEventHandlers: {}
+    customEventHandlers: {},
+    active: true
 };
 
 export default connectToAdServer(AdvertisingSlot);

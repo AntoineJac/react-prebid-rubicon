@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`The AdvertisingProvider component componentDidUpdate uses an AdvertisingContext.Provider to pass the activate method of the advertising module 1`] = `
+Object {
+  "activate": [Function],
+  "active": true,
+}
+`;
+
 exports[`The AdvertisingProvider component renders correctly 1`] = `
 <div
   id="advertising-context-provider"

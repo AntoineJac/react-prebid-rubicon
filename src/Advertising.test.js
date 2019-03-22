@@ -5,7 +5,7 @@ import { config, DIV_ID_BAR, DIV_ID_FOO } from './utils/testAdvertisingConfig';
 const GPT_SIZE_MAPPING = [[[0, 0], []], [[320, 700], [[300, 250], [320, 50]]], [[1050, 200], []]];
 
 describe('When I instantiate an advertising main module', () => {
-    let originalPbjs, originalGoogletag, advertising;
+    let originalPbjs, originalGoogletag, advertising,advertising2;
     beforeEach(() => {
         originalPbjs = setupPbjs();
         originalGoogletag = setupGoogletag();
@@ -62,8 +62,20 @@ describe('When I instantiate an advertising main module', () => {
         });
         describe('the slots of the advertising module instance', () =>
             it('are correct', () => void expect(advertising.slots).toMatchSnapshot()));
+        describe('the selected slots of the advertising module instance', () =>
+            it('are correct', () => void expect(advertising.selectedSlots).toMatchSnapshot()));
         describe('the GPT size mappings of the advertising module instance', () =>
             it('are correct', () => void expect(advertising.gptSizeMappings).toMatchSnapshot()));
+        describe('the prebid size mappings of the advertising module instance', () =>
+            it('are correct', () => void expect(advertising.prebidSizeMappings).toMatchSnapshot()));        
+        describe('the GPT size mappings of the advertising module instance are null', () => {
+            beforeEach(() => {
+                var configCopy = config;
+                configCopy.sizeMappings = '';
+                advertising2 = new Advertising(configCopy);
+            });
+            it('are incorrect', () => void expect(advertising2.gptSizeMappings).to.deep.equal({}))
+        });
         describe('and call the teardown method', () => {
             beforeEach(() => advertising.teardown());
             describe('the GPT slots', () =>

@@ -231,6 +231,10 @@ Array [
 ]
 `;
 
+exports[`When I instantiate an advertising main module and call the setup method the prebid size mappings of the advertising module instance are correct 1`] = `Object {}`;
+
+exports[`When I instantiate an advertising main module and call the setup method the selected slots of the advertising module instance are correct 1`] = `Object {}`;
+
 exports[`When I instantiate an advertising main module and call the setup method the slots of the advertising module instance are correct 1`] = `
 Object {
   "div-gpt-ad-bar": Object {
