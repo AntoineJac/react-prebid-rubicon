@@ -3,6 +3,6 @@ import AdvertisingContext from '../../AdvertisingContext';
 
 export default Component => props => (
     <AdvertisingContext.Consumer>
-        {activate => <Component {...props} activate={activate} />}
+        {({ activate, active }) => <Component {...props} activate={activate} active={active} />}
     </AdvertisingContext.Consumer>
 );

@@ -3,6 +3,7 @@
 exports[`When I connect a component to the ad server the connected component renders correctly (activate prop is added, other props are proxied through) 1`] = `
 <div
   activate="activate"
+  active={true}
   foo="bar"
 />
 `;

@@ -4,8 +4,16 @@ import PropTypes from 'prop-types';
 
 class AdvertisingSlot extends Component {
     componentDidMount() {
-        const { activate, id, customEventHandlers } = this.props;
-        activate(id, customEventHandlers);
+        const { activate, active, id, customEventHandlers } = this.props;
+        if (active) {
+            activate(id, customEventHandlers);
+        }
+    }
+    componentDidUpdate() {
+        const { activate, active, id, customEventHandlers } = this.props;
+        if (active) {
+            activate(id, customEventHandlers);
+        }
     }
     render() {
         const { id, style, className, children } = this.props;
@@ -19,11 +27,13 @@ AdvertisingSlot.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     activate: PropTypes.func.isRequired,
+    active: PropTypes.bool,
     customEventHandlers: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
 AdvertisingSlot.defaultProps = {
-    customEventHandlers: {}
+    customEventHandlers: {},
+    active: true
 };
 
 export default connectToAdServer(AdvertisingSlot);
