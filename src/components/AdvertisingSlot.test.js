@@ -10,7 +10,7 @@ describe('The advertising slot component', () => {
     beforeEach(() => {
         mockActivate = spy();
         jest.mock('./utils/connectToAdServer', () => Component => props => (
-            <Component {...props} activate={mockActivate} />
+            <Component {...props} activate={mockActivate} active={true} />
         ));
         AdvertisingSlot = require('./AdvertisingSlot').default;
     });
