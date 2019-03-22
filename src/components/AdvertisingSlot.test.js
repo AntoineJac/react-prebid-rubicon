@@ -1,7 +1,7 @@
 import React from 'react';
 import { spy, match } from 'sinon';
 import expectSnapshot from '@mt-testutils/expect-snapshot';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 const id = 'my-id';
 
@@ -13,7 +13,6 @@ describe('The advertising slot component', () => {
             <Component {...props} activate={mockActivate} />
         ));
         AdvertisingSlot = require('./AdvertisingSlot').default;
-               
     });
     it('renders correctly', () =>
         expectSnapshot(
@@ -50,6 +49,6 @@ describe('The advertising slot component', () => {
         });
         it('constructs an AdvertisingSlot module with the provided configuration', () =>
             void mockActivate.should.not.have.been.called);
-    });    
+    });
     afterEach(() => jest.resetModules());
 });

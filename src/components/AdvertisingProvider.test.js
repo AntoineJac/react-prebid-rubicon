@@ -63,7 +63,7 @@ describe('The AdvertisingProvider component', () => {
     describe('componentDidUpdate', () => {
         beforeEach(() => {
             const wrapper = mount(<AdvertisingProvider config={config} />);
-            wrapper.setProps({ config: config });
+            wrapper.setProps({ config: { config } });
             wrapper.update();
         });
         it('constructs an Advertising module with the provided configuration', () =>
@@ -90,16 +90,16 @@ describe('The AdvertisingProvider component', () => {
             component.advertising = true;
             componentWillUnmount = jest.spyOn(component.instance(), 'componentWillUnmount');
             component.unmount();
-        });    
-        it('unmount Advertising module with the provided configuration', () => {    
+        });
+        it('unmount Advertising module with the provided configuration', () => {
             expect(componentWillUnmount).toHaveBeenCalled();
         });
         it('teardown up the Advertising module', () => {
             expect(component.advertising).toBe(true);
-        });    
+        });
         it('teardown up the Advertising module', () => {
             void mockTeardown.should.have.been.called;
-        });      
+        });
         afterEach(resetMocks);
     });
 });
