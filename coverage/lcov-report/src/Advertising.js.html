@@ -1,0 +1,932 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Advertising.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> Advertising.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">91.56% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>141/154</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">79.63% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>43/54</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">90.24% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>37/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.29% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>139/149</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">81x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">54x</span>
+<span class="cline-any cline-yes">50x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">72x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">80x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">76x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">266x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">130x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">104x</span>
+<span class="cline-any cline-yes">104x</span>
+<span class="cline-any cline-yes">104x</span>
+<span class="cline-any cline-yes">104x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const defineGptSizeMappings = Symbol('define GTP size mappings (private method)');
+const getGptSizeMapping = Symbol('get GPT size mapping (private method)');
+const getPrebidSizeMapping = Symbol('get Prebid size mapping (private method)');
+const defineSlots = Symbol('define slots (private method)');
+const displaySlots = Symbol('display slots (private method)');
+const setupPrebid = Symbol('setup Prebid (private method)');
+const teardownPrebid = Symbol('teardown Prebid (private method)');
+const setupGpt = Symbol('setup GPT (private method)');
+const teardownGpt = Symbol('teardown GPT (private method)');
+const callAdserverSetup = Symbol('call DFP slots in setup (private method)');
+const callAdserverId = Symbol('call DFP by activate (private method)');
+const setupCustomEvents = Symbol('setup custom events (private method)');
+const setupCustomEvent = Symbol('setup custom event (private method)');
+const teardownCustomEvents = Symbol('teardown custom events (private method)');
+const withQueue = Symbol('with queue (private method)');
+const queueForGPT = Symbol('queue for GPT (private method)');
+const queueForPrebid = Symbol('queue for Prebid (private method)');
+const setDefaultConfig = Symbol('set default config (private method)');
+const executePlugins = Symbol('execute plugins (private method)');
+&nbsp;
+export default class Advertising {
+    constructor(config, plugins = []) {
+        this.config = config;
+        this.slots = {};
+        this.selectedSlots = {};
+        this.plugins = plugins;
+        this.gptSizeMappings = {};
+        this.sizePrebidMapping = {};
+        this.prebidSizeMappings = {};
+        this.customEventCallbacks = {};
+        this.customEventHandlers = {};
+        this.queue = [];
+        this[setDefaultConfig]();
+    }
+&nbsp;
+    // ---------- PUBLIC METHODS ----------
+&nbsp;
+    async setup() {
+        const { slots, queue } = this;
+        this[setupCustomEvents]();
+        await Promise.all([
+            Advertising[queueForPrebid](this[setupPrebid].bind(this)),
+            Advertising[queueForGPT](this[setupGpt].bind(this))
+        ]);
+        if (queue.length === 0) {
+            return;
+        }
+        for (const { id, customEventHandlers } of queue) {
+            Object.keys(customEventHandlers).forEach(<span class="fstat-no" title="function not covered" >cu</span>stomEventId =&gt; {
+<span class="cstat-no" title="statement not covered" >                if (!this.customEventCallbacks[customEventId]) {</span>
+<span class="cstat-no" title="statement not covered" >                    this.customEventCallbacks[customEventId] = {};</span>
+                }
+<span class="cstat-no" title="statement not covered" >                return (this.customEventCallbacks[customEventId][id] = customEventHandlers[customEventId]);</span>
+            });
+        }
+        const selectedSlots = queue.map(({ id }) =&gt; slots[id]);
+        const prebidSizeMappings = this[getPrebidSizeMapping]();
+        Advertising[queueForGPT](
+            () =&gt;
+                Advertising[queueForPrebid](() =&gt;
+                    window.pbjs.rp.requestBids({
+                        callback: this[callAdserverSetup],
+                        gptSlotObjects: selectedSlots,
+                        sizeMappings: prebidSizeMappings
+                    })
+                ),
+            setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                this[callAdserverSetup](selectedSlots);</span>
+            }, 2000)
+        );
+    }
+&nbsp;
+    async teardown() {
+        this[teardownCustomEvents]();
+        await Promise.all([
+            Advertising[queueForPrebid](this[teardownPrebid].bind(this)),
+            Advertising[queueForGPT](this[teardownGpt].bind(this))
+        ]);
+        this.slots = {};
+        this.gptSizeMappings = {};
+        this.sizePrebidMapping = {};
+        this.queue = {};
+    }
+&nbsp;
+    activate(id, customEventHandlers = {}) {
+        const { slots } = this;
+        if (Object.values(slots).length === 0) {
+            this.queue.push({ id, customEventHandlers });
+            return;
+        }
+        Object.keys(customEventHandlers).forEach(customEventId =&gt; {
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (!this.customEventCallbacks[customEventId]) {
+                this.customEventCallbacks[customEventId] = {};
+            }
+            return (this.customEventCallbacks[customEventId][id] = customEventHandlers[customEventId]);
+        });
+        Advertising[queueForGPT](
+            () =&gt;
+                Advertising[queueForPrebid](() =&gt;
+                    window.pbjs.rp.requestBids({
+                        callback: this[callAdserverId],
+                        gptSlotObjects: [slots[id]]
+                    })
+                ),
+            setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >                this[callAdserverId]([slots[id]]);</span>
+            }, 2000)
+        );
+    }
+&nbsp;
+    // ---------- PRIVATE METHODS ----------
+&nbsp;
+    [callAdserverSetup](slots) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (window.pbjs.adserverRequestSent) <span class="cstat-no" title="statement not covered" >return;</span>
+        window.pbjs.adserverRequestSent = true;
+        window.googletag.pubads().refresh(slots);
+    }
+&nbsp;
+    [callAdserverId](slots) {
+        const temp = slots[0].getSlotElementId();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (window.pbjs[temp]) <span class="cstat-no" title="statement not covered" >return;</span>
+        window.pbjs[temp] = true;
+        window.googletag.pubads().refresh(slots);
+    }
+&nbsp;
+    [setupCustomEvents]() {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.config.customEvents) {
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        Object.keys(this.config.customEvents).forEach(customEventId =&gt;
+            this[setupCustomEvent](customEventId, this.config.customEvents[customEventId])
+        );
+    }
+&nbsp;
+    [setupCustomEvent](customEventId, { eventMessagePrefix, divIdPrefix }) {
+        const { customEventCallbacks } = this;
+        this.customEventHandlers[customEventId] = ({ data }) =&gt; {
+            if (typeof data !== 'string' || !data.startsWith(`${eventMessagePrefix}`)) {
+                return;
+            }
+            const divId = `${divIdPrefix || <span class="branch-1 cbranch-no" title="branch not covered" >''}</span>${data.substr(eventMessagePrefix.length)}`;
+            const callbacks = customEventCallbacks[customEventId];
+            if (!callbacks) {
+                return;
+            }
+            const callback = callbacks[divId];
+            if (callback) {
+                callback();
+            }
+        };
+        window.addEventListener('message', this.customEventHandlers[customEventId]);
+    }
+&nbsp;
+    [teardownCustomEvents]() {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.config.customEvents) {
+<span class="cstat-no" title="statement not covered" >            return;</span>
+        }
+        Object.keys(this.config.customEvents).forEach(customEventId =&gt;
+            window.removeEventListener('message', this.customEventHandlers[customEventId])
+        );
+    }
+&nbsp;
+    [defineGptSizeMappings]() {
+        if (!this.config.sizeMappings) {
+            return;
+        }
+        for (const [key, value] of Object.entries(this.config.sizeMappings)) {
+            const sizeMapping = window.googletag.sizeMapping();
+            for (const { viewPortSize, sizes } of value) {
+                sizeMapping.addSize(viewPortSize, sizes);
+            }
+            this.gptSizeMappings[key] = sizeMapping.build();
+        }
+    }
+&nbsp;
+    [getGptSizeMapping](sizeMappingName) {
+        return sizeMappingName &amp;&amp; this.gptSizeMappings[sizeMappingName] ? this.gptSizeMappings[sizeMappingName] : null;
+    }
+&nbsp;
+    [getPrebidSizeMapping]() {
+        this.config.slots.forEach(({ id, sizeMappingName }) =&gt; {
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (this[getGptSizeMapping](sizeMappingName)) {
+                const tempObj = <span class="cstat-no" title="statement not covered" >this.config.sizeMappings[sizeMappingName];</span>
+<span class="cstat-no" title="statement not covered" >                Object.keys(tempObj).forEach(<span class="fstat-no" title="function not covered" >ke</span>y =&gt; (<span class="cstat-no" title="statement not covered" >tempObj[key].minViewPort = tempObj[key].viewPortSize)</span>);</span>
+<span class="cstat-no" title="statement not covered" >                this.sizePrebidMapping[id] = this.config.sizeMappings[sizeMappingName];</span>
+            }
+        });
+        return this.sizePrebidMapping;
+    }
+&nbsp;
+    [defineSlots]() {
+        this.config.slots.forEach(({ id, path, collapseEmptyDiv, targeting = <span class="branch-0 cbranch-no" title="branch not covered" >{},</span> sizes, sizeMappingName }) =&gt; {
+            const slot = window.googletag.defineSlot(path || this.config.path, sizes, id);
+&nbsp;
+            const sizeMapping = this[getGptSizeMapping](sizeMappingName);
+            if (sizeMapping) {
+                slot.defineSizeMapping(sizeMapping);
+            }
+&nbsp;
+            if (collapseEmptyDiv &amp;&amp; collapseEmptyDiv.length &amp;&amp; collapseEmptyDiv.length &gt; 0) {
+                slot.setCollapseEmptyDiv(...collapseEmptyDiv);
+            }
+&nbsp;
+            for (const [key, value] of Object.entries(targeting)) {
+                slot.setTargeting(key, value);
+            }
+&nbsp;
+            slot.addService(window.googletag.pubads());
+&nbsp;
+            this.slots[id] = slot;
+        });
+    }
+&nbsp;
+    [displaySlots]() {
+        this[executePlugins]('displaySlots');
+        this.config.slots.forEach(({ id }) =&gt; window.googletag.display(id));
+    }
+&nbsp;
+    [setupPrebid]() {
+        this[executePlugins]('setupPrebid');
+        // const adUnits = getAdUnits(this.config.slots);
+        // window.pbjs.addAdUnits(adUnits);
+        // window.pbjs.setConfig(this.config.prebid);
+    }
+&nbsp;
+    [teardownPrebid]() {
+        this[executePlugins]('teardownPrebid');
+        // getAdUnits(this.config.slots).forEach(({ code }) =&gt; window.pbjs.removeAdUnit(code));
+    }
+&nbsp;
+    [setupGpt]() {
+        this[executePlugins]('setupGpt');
+        const pubads = window.googletag.pubads();
+        const { targeting } = this.config;
+        this[defineGptSizeMappings]();
+        this[defineSlots]();
+        for (const [key, value] of Object.entries(targeting)) {
+            pubads.setTargeting(key, value);
+        }
+        pubads.disableInitialLoad();
+        pubads.enableSingleRequest();
+&nbsp;
+        window.googletag.enableServices();
+        this[displaySlots]();
+    }
+&nbsp;
+    [teardownGpt]() {
+        this[executePlugins]('teardownGpt');
+        window.googletag.destroySlots();
+    }
+&nbsp;
+    [setDefaultConfig]() {
+        if (!this.config.prebid) {
+            this.config.prebid = {};
+        }
+        if (!this.config.metaData) {
+            this.config.metaData = {};
+        }
+        if (!this.config.targeting) {
+            this.config.targeting = {};
+        }
+    }
+&nbsp;
+    [executePlugins](method) {
+        for (const plugin of this.plugins) {
+            const func = plugin[method];
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (func) {
+                func.call(this);
+            }
+        }
+    }
+&nbsp;
+    static [queueForGPT](func) {
+        return Advertising[withQueue](window.googletag.cmd, func);
+    }
+&nbsp;
+    static [queueForPrebid](func) {
+        return Advertising[withQueue](window.pbjs.que, func);
+    }
+&nbsp;
+    static [withQueue](queue, func) {
+        return new Promise(resolve =&gt;
+            queue.push(() =&gt; {
+                func();
+                resolve();
+            })
+        );
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Mar 22 2019 21:58:38 GMT+0800 (Singapore Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
