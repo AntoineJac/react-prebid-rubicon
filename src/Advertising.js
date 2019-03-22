@@ -22,6 +22,7 @@ export default class Advertising {
     constructor(config, plugins = []) {
         this.config = config;
         this.slots = {};
+        this.selectedSlots = {};
         this.plugins = plugins;
         this.gptSizeMappings = {};
         this.sizePrebidMapping = {};
@@ -52,7 +53,6 @@ export default class Advertising {
                 return (this.customEventCallbacks[customEventId][id] = customEventHandlers[customEventId]);
             });
         }
-        const divIds = queue.map(({ id }) => id);
         const selectedSlots = queue.map(({ id }) => slots[id]);
         const prebidSizeMappings = this[getPrebidSizeMapping]();
         Advertising[queueForGPT](

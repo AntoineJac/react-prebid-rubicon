@@ -30,8 +30,8 @@ export default class AdvertisingProvider extends Component {
     }
 
     render() {
-        const active = this.props.active;
-        return <AdvertisingContext.Provider value={{activate: this.activate, active: active}}>{this.props.children}</AdvertisingContext.Provider>;
+        const data = { activate: this.activate, active: this.props.active };
+        return <AdvertisingContext.Provider value={data}>{this.props.children}</AdvertisingContext.Provider>;
     }
 }
 
