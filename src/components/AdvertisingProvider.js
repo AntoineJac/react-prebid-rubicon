@@ -17,6 +17,15 @@ export default class AdvertisingProvider extends Component {
         }
     }
 
+    shouldComponentUpdate(nextProps) {
+        if (nextProps.active && nextProps.config !== this.props.config) {
+            this.advertising = new Advertising(nextProps.config, nextProps.plugins);
+            this.activate = this.advertising.activate.bind(this.advertising);
+            return true;
+        }
+        return false;
+    }
+
     componentDidUpdate() {
         if (this.props.active) {
             this.advertising.setup();
