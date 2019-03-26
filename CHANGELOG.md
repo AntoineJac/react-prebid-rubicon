@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.1 / 9 Oct 2018
+
+* Rubicon Demand Manager tool has been added.
+* window.requestBids has been replace with window.pbjs.rp.requestBids that will create a request 
+using a regex mapping between the DFP slot and the one hosted on prebid.js file hosted by Rubicon
+config file doesn't need to have prebid bidders details anymore, just the details about DFP slots
+* Provider has been updated if the component is reload (componentDidUpdate)
+* Add a feature to look for the active props (true by default) in case config is defined after the component is render or refresh
+* test and snapshots have been updated
+
+
 ## 1.0.9 / 9 Oct 2018
 
 * dependency update to fix security issues found by npm audit
