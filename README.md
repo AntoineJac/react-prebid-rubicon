@@ -1,7 +1,9 @@
 **This repo is based on the (great job) done by Ebay on: https://github.com/technology-ebay-de/react-prebid**
 
-**As a Rubicon employee, I have adapted it to make it work with it demand manager product**
-**Do notice that it is NOT an official Rubicon product and the company is not liable for any use of this unofficial product**
+**As a Rubicon employee, I have adapted it to make it work with Rubicon demand manager product**
+
+**Do notice, it is NOT an official Rubicon product and Rubicon Project could not be liable for any use of this package**
+
 **Please contact me for any further details or help on this package: ajacquemin@rubiconproject.com**
 
 # react-prebid
@@ -29,7 +31,7 @@ To use *react-prebid*, you need to have a [Doubleclick for Publishers](https://w
 
 You can view a demo of this library online on *CodeSandbox*:
 
-*   [https://codesandbox.io/s/1oy6o86wjl](https://codesandbox.io/s/1oy6o86wjl)
+*   [https://codesandbox.io/s/1oy6o86wjl](https://codesandbox.io/s/qqjvy3jz86)
 
 The demo uses the same test Prebid configuration as the
 [code examples from the official documentation](http://prebid.org/dev-docs/examples/basic-example.html).
