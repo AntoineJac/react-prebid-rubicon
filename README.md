@@ -1,6 +1,10 @@
 **This repo is based on the (great job) done by Ebay on: https://github.com/technology-ebay-de/react-prebid**
 
-**Rubicon has adapted it to make it work with it demand manager product**
+**As a Rubicon employee, I have adapted it to make it work with Rubicon demand manager product**
+
+**Do notice, it is NOT an official Rubicon product and Rubicon Project could not be liable for any use of this package**
+
+**Please contact me for any further details or help on this package: ajacquemin@rubiconproject.com**
 
 # react-prebid
 
@@ -14,7 +18,8 @@ A JavaScript library for ad placements with [Prebid](http://prebid.org) header b
 * Works well in single page applications with multiple routes
 * Suitable for server-side-rendering
 
-[![Build Status](https://travis-ci.com/technology-ebay-de/react-prebid.svg?branch=master)](https://travis-ci.com/technology-ebay-de/react-prebid) [![Coverage Status](https://coveralls.io/repos/github/technology-ebay-de/react-prebid/badge.svg?branch=master)](https://coveralls.io/github/technology-ebay-de/react-prebid?branch=master)
+[![Build Status](https://travis-ci.org/AntoineJac/react-prebid-rubicon.svg?branch=master)](https://travis-ci.org/AntoineJac/react-prebid-rubicon)
+[![Coverage Status](https://coveralls.io/repos/github/AntoineJac/react-prebid-rubicon/badge.svg)](https://coveralls.io/github/AntoineJac/react-prebid-rubicon)
 
 ## Prerequisites
 
@@ -26,7 +31,7 @@ To use *react-prebid*, you need to have a [Doubleclick for Publishers](https://w
 
 You can view a demo of this library online on *CodeSandbox*:
 
-*   [https://codesandbox.io/s/1oy6o86wjl](https://codesandbox.io/s/1oy6o86wjl)
+*   [https://codesandbox.io/s/1oy6o86wjl](https://codesandbox.io/s/qqjvy3jz86)
 
 The demo uses the same test Prebid configuration as the
 [code examples from the official documentation](http://prebid.org/dev-docs/examples/basic-example.html).
@@ -35,11 +40,11 @@ The demo uses the same test Prebid configuration as the
 
 You can find documentation on how to use this library in the project's wiki:
 
-* [Usage](https://github.com/technology-ebay-de/react-prebid/wiki/Usage)
-* [API](https://github.com/technology-ebay-de/react-prebid/wiki/API)
-* [Configuration](https://github.com/technology-ebay-de/react-prebid/wiki/Configuration)
-* [Custom Events](https://github.com/technology-ebay-de/react-prebid/wiki/Custom-Events)
-* [Plugins](https://github.com/technology-ebay-de/react-prebid/wiki/Custom-Events)
+* [Usage](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Usage)
+* [API](https://github.com/AntoineJac/react-prebid-rubicon/wiki/API)
+* [Configuration](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Configuration)
+* [Custom Events](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Custom-Events)
+* [Plugins](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Plugins)
 
 ## License
 

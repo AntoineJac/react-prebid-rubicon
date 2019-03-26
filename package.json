@@ -1,6 +1,6 @@
 {
   "name": "react-prebid-rubicon",
-  "version": "1.2.0",
+  "version": "1.2.2",
   "description": "Library for ad placements with Prebid header bidding in React applications using Rubicon demand manager hosted solution",
   "main": "index.js",
   "esnext": "index-esnext.js",
@@ -49,7 +49,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rubicon-project/react-prebid-rubicon.git"
+    "url": "https://github.com/AntoineJac/react-prebid-rubicon.git"
   },
   "author": "Antoine Jacquemin <ajacquemin@rubiconproject.com>",
   "license": "MIT",
