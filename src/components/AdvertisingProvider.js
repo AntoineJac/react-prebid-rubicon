@@ -5,10 +5,6 @@ import AdvertisingConfigPropType from './utils/AdvertisingConfigPropType';
 import AdvertisingContext from '../AdvertisingContext';
 
 export default class AdvertisingProvider extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     componentDidMount() {
         if (this.props.active) {
             this.advertising.setup();
