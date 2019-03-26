@@ -5,25 +5,10 @@ import AdvertisingConfigPropType from './utils/AdvertisingConfigPropType';
 import AdvertisingContext from '../AdvertisingContext';
 
 export default class AdvertisingProvider extends Component {
-    constructor(props) {
-        super(props);
-        this.advertising = new Advertising(props.config, props.plugins);
-        this.activate = this.advertising.activate.bind(this.advertising);
-    }
-
     componentDidMount() {
         if (this.props.active) {
             this.advertising.setup();
         }
-    }
-
-    shouldComponentUpdate(nextProps) {
-        if (nextProps.active && nextProps.config !== this.props.config) {
-            this.advertising = new Advertising(nextProps.config, nextProps.plugins);
-            this.activate = this.advertising.activate.bind(this.advertising);
-            return true;
-        }
-        return false;
     }
 
     componentDidUpdate() {
@@ -39,6 +24,8 @@ export default class AdvertisingProvider extends Component {
     }
 
     render() {
+        this.advertising = new Advertising(this.props.config, this.props.plugins);
+        this.activate = this.advertising.activate.bind(this.advertising);
         const data = { activate: this.activate, active: this.props.active };
         return <AdvertisingContext.Provider value={data}>{this.props.children}</AdvertisingContext.Provider>;
     }
