@@ -23,7 +23,7 @@ cache:
 jobs:
   include:
     - stage: Produce Coverage
-      if: branch = master AND type = pull_request
+      if: branch = master AND type = push
       node_js: node
       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
     - stage: Deploy on NPM
