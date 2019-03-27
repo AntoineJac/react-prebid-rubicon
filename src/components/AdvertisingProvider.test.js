@@ -87,6 +87,7 @@ describe('The AdvertisingProvider component', () => {
         let component, componentWillUnmount;
         beforeEach(() => {
             component = mount(<AdvertisingProvider config={config} />);
+            component.setState({ advertising: { teardown: mockTeardown } });
             component.advertising = true;
             componentWillUnmount = jest.spyOn(component.instance(), 'componentWillUnmount');
             component.unmount();
@@ -101,6 +102,38 @@ describe('The AdvertisingProvider component', () => {
             void mockTeardown.should.have.been.called;
         });
         afterEach(resetMocks);
+    });
+    describe('when unmounted', () => {
+        let component, componentWillUnmount;
+        beforeEach(() => {
+            component = mount(<AdvertisingProvider config={config} />);
+            component.setState({ advertising: false });
+            componentWillUnmount = jest.spyOn(component.instance(), 'componentWillUnmount');
+            component.unmount();
+        });
+        it('unmount Advertising module with the provided configuration', () => {
+            expect(componentWillUnmount).toHaveBeenCalled();
+        });
+        it('teardown up the Advertising module', () => {
+            void mockTeardown.should.not.have.been.called;
+        });
+        afterEach(resetMocks);
+    });
+    describe('when getDerivedStateFromProps', () => {
+        it('should not called update', () => {
+            const givenProps = { config: 'test1' };
+            const givenState = { config: 'test1' };
+            const result = AdvertisingProvider.getDerivedStateFromProps(givenProps, givenState);
+            expect(result).toEqual(null);
+        });
+        it('should called update', () => {
+            const givenProps = { config: 'test1' };
+            const givenState = { config: 'test2' };
+            const result = AdvertisingProvider.getDerivedStateFromProps(givenProps, givenState);
+            expect(result).to.have.property('activate');
+            expect(result).to.have.property('advertising');
+            expect(result.config).toEqual('test1');
+        });
     });
 });
 
