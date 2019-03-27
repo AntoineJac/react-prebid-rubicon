@@ -21,22 +21,25 @@ jobs:
     - stage: Produce Coverage
       node_js: node
       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-    - stage: Deploy on Github deploy branch
+    - stage: Deploy on NPM
       if: branch = master
       before_deploy:  
       - npm run postBuild
-      - git checkout --
+      - git checkout
+      - git add .
+      - git commit "new version"
+      - npm version patch
       # sh ./push.sh
       deploy:
         # Deploy Github
-        - provider: pages
-          skip-cleanup: true
-          target-branch: readyToDeploy
-          github-token: $GITHUB_TOKEN
-          keep-history: true
+        - provider: npm
+          email: $NPM_EMAIL
+          api_key: $NPM_TOKEN
+          skip_cleanup: true
           on:
-            branch: master             
-    - stage: Deploy on NPM 
+            branch: master
+            repo: AntoineJac/react-prebid-rubicon           
+    - stage: Deploy on Github master branch
       if: branch = deploy
       before_deploy:  
       - npm run postBuild
@@ -50,10 +53,10 @@ jobs:
           on:
             branch: deploy
         # Deploy Github
-        - provider: npm
-          email: $NPM_EMAIL
-          api_key: $NPM_TOKEN
-          skip_cleanup: true
+        - provider: pages
+          skip-cleanup: true
+          target-branch: master
+          github-token: $GITHUB_TOKEN
+          keep-history: true
           on:
-            branch: deploy
-            repo: AntoineJac/react-prebid-rubicon
+            branch: deploy    
