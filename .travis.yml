@@ -32,7 +32,7 @@ jobs:
       - npm run postBuild
       - git checkout
       - git add .
-      - git commit "new version"
+      - git commit -m "new version"
       - npm version patch
       deploy:
         # Deploy Surge
