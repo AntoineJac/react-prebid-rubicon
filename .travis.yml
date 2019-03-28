@@ -27,7 +27,7 @@ jobs:
       node_js: node
       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
     - stage: Deploy on NPM
-      if: branch = master AND type = push
+      if: branch = master AND type = push AND commit_message =~ /(newRelease_v|wip)/
       before_deploy:  
       - npm run postBuild
       - git checkout

@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest",
     "build": "NODE_ENV=production webpack",
-    "deploy": "git add . && git commit -m 'new version2' && npm version patch && git push origin master --tag",
+    "deploy": "git add . && git commit -m 'new version' && git push",
     "eslint": "eslint '**/*.js'",
     "prettier": "prettier '**/*.js' --write",
     "postBuild": "npm run prettier --write && npm run eslint --fix",
