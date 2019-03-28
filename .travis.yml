@@ -31,9 +31,6 @@ jobs:
       before_deploy:  
       - npm run postBuild
       - git checkout
-      - git add .
-      - git commit -m "new version"
-      - npm version patch
       deploy:
         # Deploy Surge
         - provider: surge
@@ -47,6 +44,6 @@ jobs:
           api_key: $NPM_TOKEN
           skip_cleanup: true
           on:
+            tags: true
             branch: master
             repo: AntoineJac/react-prebid-rubicon
-
