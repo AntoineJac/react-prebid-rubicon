@@ -44,6 +44,5 @@ jobs:
           api_key: $NPM_TOKEN
           skip_cleanup: true
           on:
-            tags: true
             branch: master
             repo: AntoineJac/react-prebid-rubicon
