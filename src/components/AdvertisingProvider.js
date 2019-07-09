@@ -3,56 +3,94 @@ import Advertising from '../Advertising';
 import PropTypes from 'prop-types';
 import AdvertisingConfigPropType from './utils/AdvertisingConfigPropType';
 import AdvertisingContext from '../AdvertisingContext';
+import equal from 'fast-deep-equal';
 
 export default class AdvertisingProvider extends Component {
     constructor(props) {
         super(props);
-        this.advertising = new Advertising(props.config, props.plugins);
+        this.initialize();
         this.state = {
-            config: props.config,
-            advertising: this.advertising,
-            activate: this.advertising.activate.bind(this.advertising)
+            shouldRefresh: false,
+            firstCall: true,
+            advertising: this.advertising
         };
     }
 
     componentDidMount() {
-        if (this.props.active) {
-            this.state.advertising.setup();
+        if (this.advertising.isConfigReady() && this.props.active) {
+            this.advertising.setup();
         }
     }
 
-    static getDerivedStateFromProps(props, state) {
-        if (props.config !== state.config) {
-            const advertising = new Advertising(props.config, props.plugins);
-            return {
-                config: props.config,
-                advertising,
-                activate: advertising.activate.bind(advertising)
-            };
-        }
-        return null;
-    }
+    componentDidUpdate() {
+        const { config, active } = this.props;
+        const { advertising, shouldRefresh } = this.state;
+        const isConfigReady = advertising.isConfigReady();
 
-    componentDidUpdate(prevPros) {
-        if (this.props.active && prevPros.config !== this.props.config) {
-            this.state.advertising.setup();
+        // activate advertising when the config changes from `undefined`
+        if (!isConfigReady && config && active) {
+            advertising.setConfig(config);
+            advertising.setup();
+        } else if (isConfigReady && shouldRefresh && config.singleRequest && active) {
+            advertising.setup();
         }
     }
 
     componentWillUnmount() {
-        if (this.state.advertising) {
-            this.state.advertising.teardown();
+        if (this.props.config) {
+            this.advertising.teardown();
         }
     }
 
+    static getDerivedStateFromProps(props, state) {
+        const { firstCall, advertising } = state;
+        if (!firstCall && !equal(props.config, advertising.prevConfig) && props.shouldRefresh) {
+            advertising.teardown();
+
+            const { config, plugins, active } = props;
+            const newAdvertising = new Advertising(config, plugins);
+            const isConfigReady = newAdvertising.isConfigReady();
+
+            if (isConfigReady && !config.singleRequest && active) {
+                newAdvertising.setup();
+            }
+
+            return {
+                advertising: newAdvertising,
+                shouldRefresh: true
+            };
+        }
+
+        if (firstCall) {
+            return {
+                firstCall: false
+            };
+        }
+
+        return {
+            shouldRefresh: false
+        };
+    }
+
+    initialize() {
+        const { config, plugins } = this.props;
+        this.advertising = new Advertising(config, plugins);
+    }
+
     render() {
-        const data = { activate: this.state.activate, active: this.props.active };
+        const { advertising, shouldRefresh } = this.state;
+        const data = {
+            activate: advertising.activate.bind(this.state.advertising),
+            active: this.props.active,
+            shouldRefresh
+        };
         return <AdvertisingContext.Provider value={data}>{this.props.children}</AdvertisingContext.Provider>;
     }
 }
 
 AdvertisingProvider.propTypes = {
     active: PropTypes.bool,
+    shouldRefresh: PropTypes.bool,
     config: AdvertisingConfigPropType,
     children: PropTypes.node,
     plugins: PropTypes.arrayOf(
@@ -66,5 +104,6 @@ AdvertisingProvider.propTypes = {
 };
 
 AdvertisingProvider.defaultProps = {
-    active: true
+    active: true,
+    shouldRefresh: false
 };

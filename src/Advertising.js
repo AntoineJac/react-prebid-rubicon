@@ -21,16 +21,18 @@ const executePlugins = Symbol('execute plugins (private method)');
 export default class Advertising {
     constructor(config, plugins = []) {
         this.config = config;
+        this.prevConfig = {};
         this.slots = {};
         this.selectedSlots = {};
         this.plugins = plugins;
         this.gptSizeMappings = {};
-        this.sizePrebidMapping = {};
         this.prebidSizeMappings = {};
         this.customEventCallbacks = {};
         this.customEventHandlers = {};
         this.queue = [];
-        this[setDefaultConfig]();
+        if (config && Object.keys(config).length !== 0) {
+            this[setDefaultConfig]();
+        }
     }
 
     // ---------- PUBLIC METHODS ----------
@@ -54,14 +56,14 @@ export default class Advertising {
             });
         }
         const selectedSlots = queue.map(({ id }) => slots[id]);
-        const prebidSizeMappings = this[getPrebidSizeMapping]();
         Advertising[queueForGPT](
             () =>
                 Advertising[queueForPrebid](() =>
                     window.pbjs.rp.requestBids({
                         callback: this[callAdserverSetup],
                         gptSlotObjects: selectedSlots,
-                        sizeMappings: prebidSizeMappings
+                        sizeMappings: this.prebidSizeMappings,
+                        data: this.config.dataPrebid
                     })
                 ),
             setTimeout(() => {
@@ -76,15 +78,19 @@ export default class Advertising {
             Advertising[queueForPrebid](this[teardownPrebid].bind(this)),
             Advertising[queueForGPT](this[teardownGpt].bind(this))
         ]);
+        for (const temp of Object.keys(this.slots)) {
+            window.pbjs[temp] = false;
+        }
+        window.pbjs.adserverRequestSent = false;
         this.slots = {};
         this.gptSizeMappings = {};
-        this.sizePrebidMapping = {};
+        this.prebidSizeMappings = {};
         this.queue = {};
     }
 
     activate(id, customEventHandlers = {}) {
         const { slots } = this;
-        if (Object.values(slots).length === 0) {
+        if (Object.values(slots).length === 0 || this.config.singleRequest) {
             this.queue.push({ id, customEventHandlers });
             return;
         }
@@ -99,13 +105,24 @@ export default class Advertising {
                 Advertising[queueForPrebid](() =>
                     window.pbjs.rp.requestBids({
                         callback: this[callAdserverId],
-                        gptSlotObjects: [slots[id]]
+                        gptSlotObjects: [slots[id]],
+                        sizeMappings: this.prebidSizeMappings,
+                        data: this.config.dataPrebid
                     })
                 ),
             setTimeout(() => {
                 this[callAdserverId]([slots[id]]);
             }, 2000)
         );
+    }
+
+    isConfigReady() {
+        return Boolean(this.config && Object.keys(this.config).length !== 0);
+    }
+
+    setConfig(config) {
+        this.config = config;
+        this[setDefaultConfig]();
     }
 
     // ---------- PRIVATE METHODS ----------
@@ -178,14 +195,16 @@ export default class Advertising {
     }
 
     [getPrebidSizeMapping]() {
+        if (!this.config.slots) {
+            return;
+        }
         this.config.slots.forEach(({ id, sizeMappingName }) => {
             if (this[getGptSizeMapping](sizeMappingName)) {
-                const tempObj = this.config.sizeMappings[sizeMappingName];
+                const tempObj = JSON.parse(JSON.stringify(this.config.sizeMappings[sizeMappingName]));
                 Object.keys(tempObj).forEach(key => (tempObj[key].minViewPort = tempObj[key].viewPortSize));
-                this.sizePrebidMapping[id] = this.config.sizeMappings[sizeMappingName];
+                this.prebidSizeMappings[id] = tempObj;
             }
         });
-        return this.sizePrebidMapping;
     }
 
     [defineSlots]() {
@@ -234,6 +253,7 @@ export default class Advertising {
         const { targeting } = this.config;
         this[defineGptSizeMappings]();
         this[defineSlots]();
+        this[getPrebidSizeMapping]();
         for (const [key, value] of Object.entries(targeting)) {
             pubads.setTargeting(key, value);
         }
@@ -259,6 +279,7 @@ export default class Advertising {
         if (!this.config.targeting) {
             this.config.targeting = {};
         }
+        this.prevConfig = JSON.parse(JSON.stringify(this.config));
     }
 
     [executePlugins](method) {

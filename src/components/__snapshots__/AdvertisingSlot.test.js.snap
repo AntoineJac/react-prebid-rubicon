@@ -15,3 +15,19 @@ exports[`The advertising slot component renders correctly 1`] = `
   </h1>
 </div>
 `;
+
+exports[`The advertising slot component renders correctly 2`] = `
+<div
+  className="my-class"
+  id="my-id"
+  style={
+    Object {
+      "color": "hotpink",
+    }
+  }
+>
+  <h1>
+    hello
+  </h1>
+</div>
+`;

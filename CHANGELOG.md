@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.0 / 9 Jul 2019
+
+* Use the state to control and pass advertising
+* window.requestBids added 2 new options: 
+data passed via config.dataPrebid
+sizeMappings (based on the gpt size mapping)
+* Provider changes to use getDerivedStateFromProps to control if the component should reload (componentDidUpdate)
+* Config.singleRequest to enable singleRequest for ads refresh (false by default).
+* Provider props.shouldRefresh (false by default) to control if ads should be reload 
+when the config file is edited. All ads will be refreshed. Not option know to control 
+which slot will be enable on Prebid or refresh. future release planend to add 2 new options:
+config.slot.enablePrebid and config.slot.enableRefresh
+* Example app.js and config.js have been edited
+
 ## 1.2.1 / 9 Oct 2018
 
 * Rubicon Demand Manager tool has been added.
