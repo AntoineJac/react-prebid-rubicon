@@ -70,6 +70,10 @@ export const config = {
             ]
         }
     ],
+    dataPrebid: {
+        testKeyWord_1: 'keyword1',
+        testKeyWord_2: 'keyword2'
+    },
     sizeMappings: {
         mobailAndTablet: [
             {

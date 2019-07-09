@@ -5,5 +5,6 @@ exports[`When I connect a component to the ad server the connected component ren
   activate="activate"
   active={true}
   foo="bar"
+  shouldRefresh={false}
 />
 `;

@@ -29,12 +29,41 @@ describe('The advertising slot component', () => {
     describe('componentDidUpdate', () => {
         beforeEach(() => {
             const wrapper = mount(<AdvertisingSlot id={id} />);
-            wrapper.setProps({ id: 'my-id1' });
+            wrapper.setProps({ id: 'my-id1', shouldRefresh: true, active: true });
             wrapper.update();
         });
         it('calls the activate function with the ID2', () => void mockActivate.should.have.been.calledWith('my-id1'));
         it('calls the activate function with a collapse callback2', () =>
             void mockActivate.should.have.been.calledWith(match.any, match.object));
+    });
+    afterEach(() => jest.resetModules());
+});
+
+describe('The advertising slot component', () => {
+    let AdvertisingSlot, mockActivate;
+    beforeEach(() => {
+        mockActivate = spy();
+        jest.mock('./utils/connectToAdServer', () => Component => props => (
+            <Component {...props} active={false} activate={mockActivate} />
+        ));
+        AdvertisingSlot = require('./AdvertisingSlot').default;
+    });
+    it('renders correctly', () =>
+        expectSnapshot(
+            <AdvertisingSlot id={id} style={{ color: 'hotpink' }} className="my-class">
+                <h1>hello</h1>
+            </AdvertisingSlot>
+        ));
+    describe('componentDidUpdate when shouldRefresh is false by default ', () => {
+        beforeEach(() => {
+            const wrapper = mount(<AdvertisingSlot id={id} />);
+            wrapper.setProps({ id: 'my-id1', shouldRefresh: false, active: true });
+            wrapper.update();
+        });
+        it('calls the activate function with the ID2', () =>
+            void mockActivate.should.not.have.been.calledWith('my-id1'));
+        it('calls the activate function with a collapse callback2', () =>
+            void mockActivate.should.not.have.been.calledWith(match.any, match.object));
     });
     describe('when mounted with active = false', () => {
         beforeEach(() => mount(<AdvertisingSlot id={id} active={false} />));

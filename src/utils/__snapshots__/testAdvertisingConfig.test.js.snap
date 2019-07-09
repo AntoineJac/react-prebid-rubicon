@@ -9,6 +9,10 @@ Object {
       "eventMessagePrefix": "CloseAdvContainer:",
     },
   },
+  "dataPrebid": Object {
+    "testKeyWord_1": "keyword1",
+    "testKeyWord_2": "keyword2",
+  },
   "metaData": Object {
     "usdToEurRate": 2,
   },

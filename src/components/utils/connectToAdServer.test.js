@@ -4,7 +4,7 @@ import expectSnapshot from '@mt-testutils/expect-snapshot';
 
 jest.mock('../../AdvertisingContext', () => ({
     Consumer({ children }) {
-        return children({ activate: 'activate', active: true });
+        return children({ activate: 'activate', active: true, shouldRefresh: false });
     }
 }));
 

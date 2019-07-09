@@ -4,6 +4,7 @@ exports[`The AdvertisingProvider component componentDidUpdate uses an Advertisin
 Object {
   "activate": [Function],
   "active": true,
+  "shouldRefresh": false,
 }
 `;
 
@@ -21,5 +22,6 @@ exports[`The AdvertisingProvider component when mounted uses an AdvertisingConte
 Object {
   "activate": [Function],
   "active": true,
+  "shouldRefresh": false,
 }
 `;

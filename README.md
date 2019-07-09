@@ -31,7 +31,7 @@ To use *react-prebid*, you need to have a [Doubleclick for Publishers](https://w
 
 You can view a demo of this library online on *CodeSandbox*:
 
-*   [https://codesandbox.io/s/1oy6o86wjl](https://codesandbox.io/s/qqjvy3jz86)
+*   [https://codesandbox.io/s/react-prebid-4t5wg](https://codesandbox.io/s/react-prebid-4t5wg)
 
 The demo uses the same test Prebid configuration as the
 [code examples from the official documentation](http://prebid.org/dev-docs/examples/basic-example.html).
