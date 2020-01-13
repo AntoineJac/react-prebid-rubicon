@@ -15,11 +15,13 @@ describe('When I instantiate an advertising main module', () => {
         beforeEach(() => {
             advertising.setup();
         });
-        describe('initial loading of ad creatives through GPT', () =>
-            it('is disabled', () => void expect(global.googletag.pubads().disableInitialLoad).to.have.been.calledOnce));
-        describe('size mappings for responsive ads', () =>
+        describe('initial loading of ad creatives through GPT', () => {
+            it('is disabled', () => void expect(global.googletag.pubads().disableInitialLoad).to.have.been.calledOnce);
+        });
+        describe('size mappings for responsive ads', () => {
             it('are defined using GPT', () =>
-                void expect(global.googletag.sizeMapping().addSize.args).toMatchSnapshot()));
+                void expect(global.googletag.sizeMapping().addSize.args).toMatchSnapshot());
+        });
         describe('a GPT slot', () => {
             it('is defined for each slot', () => void expect(global.googletag.defineSlot).to.have.been.calledTwice);
             it('is defined for the “foo” ad with the correct parameters', () =>
@@ -47,12 +49,15 @@ describe('When I instantiate an advertising main module', () => {
             it('gets the pubads service added to it', () =>
                 void expect(foo.addService.firstCall.args[0]).to.deep.equal(global.googletag.pubads()));
         });
-        describe('global GPT targeting parameters', () =>
-            it('are set correctly', () => void expect(global.googletag.pubads().setTargeting.args).toMatchSnapshot()));
-        describe('GPT single request mode', () =>
-            it('is enabled', () => void expect(global.googletag.pubads().enableSingleRequest).to.have.been.calledOnce));
-        describe('the GPT services', () =>
-            it('are enabled', () => void expect(global.googletag.enableServices).to.have.been.calledOnce));
+        describe('global GPT targeting parameters', () => {
+            it('are set correctly', () => void expect(global.googletag.pubads().setTargeting.args).toMatchSnapshot());
+        });
+        describe('GPT single request mode', () => {
+            it('is enabled', () => void expect(global.googletag.pubads().enableSingleRequest).to.have.been.calledOnce);
+        });
+        describe('the GPT services', () => {
+            it('are enabled', () => void expect(global.googletag.enableServices).to.have.been.calledOnce);
+        });
         describe('the display method of GPT', () => {
             it('is called for each slot', () => void expect(global.googletag.display).to.have.been.calledTwice);
             it('is called with the DIV ID of the “foo” ad', () =>
@@ -60,14 +65,18 @@ describe('When I instantiate an advertising main module', () => {
             it('is called with the DIV ID of the “bar” ad', () =>
                 void expect(global.googletag.display).to.have.been.calledWith(DIV_ID_BAR));
         });
-        describe('the slots of the advertising module instance', () =>
-            it('are correct', () => void expect(advertising.slots).toMatchSnapshot()));
-        describe('the selected slots of the advertising module instance', () =>
-            it('are correct', () => void expect(advertising.selectedSlots).toMatchSnapshot()));
-        describe('the GPT size mappings of the advertising module instance', () =>
-            it('are correct', () => void expect(advertising.gptSizeMappings).toMatchSnapshot()));
-        describe('the prebid size mappings of the advertising module instance', () =>
-            it('are correct', () => void expect(advertising.prebidSizeMappings).toMatchSnapshot()));
+        describe('the slots of the advertising module instance', () => {
+            it('are correct', () => void expect(advertising.slots).toMatchSnapshot());
+        });
+        describe('the selected slots of the advertising module instance', () => {
+            it('are correct', () => void expect(advertising.selectedSlots).toMatchSnapshot());
+        });
+        describe('the GPT size mappings of the advertising module instance', () => {
+            it('are correct', () => void expect(advertising.gptSizeMappings).toMatchSnapshot());
+        });
+        describe('the prebid size mappings of the advertising module instance', () => {
+            it('are correct', () => void expect(advertising.prebidSizeMappings).toMatchSnapshot());
+        });
         describe('the GPT size mappings of the advertising module instance are null', () => {
             beforeEach(() => {
                 const configCopy = config;
@@ -78,17 +87,21 @@ describe('When I instantiate an advertising main module', () => {
         });
         describe('and call the teardown method', () => {
             beforeEach(() => advertising.teardown());
-            describe('the GPT slots', () =>
-                it('are destroyed', () => void expect(global.googletag.destroySlots).to.have.been.calledOnce));
-            describe('the slots of the advertising module instance', () =>
-                it('are empty', () => void expect(advertising.slots).to.deep.equal({})));
-            describe('the GPT size mappings of the advertising module instance', () =>
-                it('are empty', () => void expect(advertising.gptSizeMappings).to.deep.equal({})));
+            describe('the GPT slots', () => {
+                it('are destroyed', () => void expect(global.googletag.destroySlots).to.have.been.calledOnce);
+            });
+            describe('the slots of the advertising module instance', () => {
+                it('are empty', () => void expect(advertising.slots).to.deep.equal({}));
+            });
+            describe('the GPT size mappings of the advertising module instance', () => {
+                it('are empty', () => void expect(advertising.gptSizeMappings).to.deep.equal({}));
+            });
         });
         describe('and I activate the “foo” ad', () => {
             beforeEach(() => advertising.activate(DIV_ID_FOO));
-            describe('a bid with the correct parameters', () =>
-                it('is requested', () => void expect(global.pbjs.rp.requestBids.args).toMatchSnapshot()));
+            describe('a bid with the correct parameters', () => {
+                it('is requested', () => void expect(global.pbjs.rp.requestBids.args).toMatchSnapshot());
+            });
         });
         describe('and I activate the “foo” ad with a custom events object to collapse its slot', () => {
             let collapse;
@@ -101,24 +114,27 @@ describe('When I instantiate an advertising main module', () => {
                     window.postMessage('CloseAdvContainer:foo', '*');
                     setTimeout(() => done());
                 });
-                describe('the provided collapse callback', () =>
-                    it('is called', () => void expect(collapse).to.have.been.calledOnce));
+                describe('the provided collapse callback', () => {
+                    it('is called', () => void expect(collapse).to.have.been.calledOnce);
+                });
             });
             describe('and I send some message event', () => {
                 beforeEach(done => {
                     window.postMessage({ foo: 'thud' }, '*');
                     setTimeout(() => done());
                 });
-                describe('the provided collapse callback', () =>
-                    it('is not called', () => void expect(collapse).to.not.have.been.called));
+                describe('the provided collapse callback', () => {
+                    it('is not called', () => void expect(collapse).to.not.have.been.called);
+                });
             });
             describe('and I send a message event to collapse another ad slot', () => {
                 beforeEach(done => {
                     window.postMessage('CloseAdvContainer:waldo', '*');
                     setTimeout(() => done());
                 });
-                describe('the provided collapse callback', () =>
-                    it('is not called', () => void expect(collapse).to.not.have.been.called));
+                describe('the provided collapse callback', () => {
+                    it('is not called', () => void expect(collapse).to.not.have.been.called);
+                });
             });
         });
     });
@@ -136,16 +152,20 @@ describe('When I instantiate an advertising main module', () => {
     });
     describe('and I activate the “foo” ad before the advertising module was set up', () => {
         beforeEach(() => advertising.activate(DIV_ID_FOO));
-        describe('no bid', () =>
-            it('is requested', () => void expect(global.pbjs.rp.requestBids).to.not.have.been.called));
-        describe('the ad slot', () =>
-            it('is not refreshed', () => void expect(global.googletag.pubads().refresh).to.not.have.been.called));
+        describe('no bid', () => {
+            it('is requested', () => void expect(global.pbjs.rp.requestBids).to.not.have.been.called);
+        });
+        describe('the ad slot', () => {
+            it('is not refreshed', () => void expect(global.googletag.pubads().refresh).to.not.have.been.called);
+        });
         describe('and I call the setup method', () => {
             beforeEach(() => advertising.setup());
-            describe('a bid', () =>
-                it('is requested', () => void expect(global.pbjs.rp.requestBids).to.have.been.calledOnce));
-            describe('the ad slot', () =>
-                it('is refreshed', () => void expect(global.googletag.pubads().refresh).to.have.been.calledOnce));
+            describe('a bid', () => {
+                it('is requested', () => void expect(global.pbjs.rp.requestBids).to.have.been.calledOnce);
+            });
+            describe('the ad slot', () => {
+                it('is refreshed', () => void expect(global.googletag.pubads().refresh).to.have.been.calledOnce);
+            });
         });
     });
     afterEach(() => {
@@ -204,29 +224,39 @@ describe('When I instantiate an advertising main module with plugins', () => {
     });
     describe('and call the setup method', () => {
         beforeEach(() => advertising.setup());
-        describe("the plugin's hook for Prebid setup", () =>
-            it('is called', () => void plugins[0].setupPrebid.should.have.been.called));
-        describe("the plugin's hook for Prebid teardown", () =>
-            it('is not called', () => void plugins[0].teardownPrebid.should.not.have.been.called));
-        describe("the plugin's hook for GPT setup", () =>
-            it('is called', () => void plugins[0].setupGpt.should.have.been.called));
-        describe("the plugin's hook for GPT teardown", () =>
-            it('is not called', () => void plugins[0].teardownGpt.should.not.have.been.called));
-        describe("the plugin's hook for displaying slots", () =>
-            it('is called', () => void plugins[0].displaySlots.should.have.been.called));
+        describe("the plugin's hook for Prebid setup", () => {
+            it('is called', () => void plugins[0].setupPrebid.should.have.been.called);
+        });
+        describe("the plugin's hook for Prebid teardown", () => {
+            it('is not called', () => void plugins[0].teardownPrebid.should.not.have.been.called);
+        });
+        describe("the plugin's hook for GPT setup", () => {
+            it('is called', () => void plugins[0].setupGpt.should.have.been.called);
+        });
+        describe("the plugin's hook for GPT teardown", () => {
+            it('is not called', () => void plugins[0].teardownGpt.should.not.have.been.called);
+        });
+        describe("the plugin's hook for displaying slots", () => {
+            it('is called', () => void plugins[0].displaySlots.should.have.been.called);
+        });
     });
     describe('and call the teardown method', () => {
         beforeEach(() => advertising.teardown());
-        describe("the plugin's hook for Prebid setup", () =>
-            it('is not called', () => void plugins[0].setupPrebid.should.not.have.been.called));
-        describe("the plugin's hook for Prebid teardown", () =>
-            it('is called', () => void plugins[0].teardownPrebid.should.have.been.called));
-        describe("the plugin's hook for GPT setup", () =>
-            it('is not called', () => void plugins[0].setupGpt.should.not.have.been.called));
-        describe("the plugin's hook for GPT teardown", () =>
-            it('is called', () => void plugins[0].teardownGpt.should.have.been.called));
-        describe("the plugin's hook for displaying slots", () =>
-            it('is not called', () => void plugins[0].displaySlots.should.not.have.been.called));
+        describe("the plugin's hook for Prebid setup", () => {
+            it('is not called', () => void plugins[0].setupPrebid.should.not.have.been.called);
+        });
+        describe("the plugin's hook for Prebid teardown", () => {
+            it('is called', () => void plugins[0].teardownPrebid.should.have.been.called);
+        });
+        describe("the plugin's hook for GPT setup", () => {
+            it('is not called', () => void plugins[0].setupGpt.should.not.have.been.called);
+        });
+        describe("the plugin's hook for GPT teardown", () => {
+            it('is called', () => void plugins[0].teardownGpt.should.have.been.called);
+        });
+        describe("the plugin's hook for displaying slots", () => {
+            it('is not called', () => void plugins[0].displaySlots.should.not.have.been.called);
+        });
     });
     afterEach(() => {
         global.pbjs = originalPbjs;
