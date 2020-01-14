@@ -31,7 +31,11 @@ const config = {
 describe('When I check the prop types for a valid config with no slots', () => {
     let result;
     beforeEach(() => (result = checkPropTypes(MyComponent.propTypes, { config })));
-    describe('the prop type validation', () => it('passes', () => void expect(result).toBeUndefined()));
+    describe('the prop type validation', () => {
+        it('passes', () => {
+            expect(result).toBeUndefined();
+        });
+    });
 });
 describe('When I check the prop types for a valid config with a valid slot', () => {
     let result;
@@ -63,7 +67,11 @@ describe('When I check the prop types for a valid config with a valid slot', () 
                 }
             }))
     );
-    describe('the prop type validation', () => it('passes', () => void expect(result).toBeUndefined()));
+    describe('the prop type validation', () => {
+        it('passes', () => {
+            expect(result).toBeUndefined();
+        });
+    });
 });
 describe('When I check the prop types for a valid config with an invalid slot', () => {
     let result;
@@ -78,18 +86,30 @@ describe('When I check the prop types for a valid config with an invalid slot', 
                 }
             }))
     );
-    describe('the prop type validation', () => it('fails', () => void expect(result).toBeTruthy()));
+    describe('the prop type validation', () => {
+        it('fails', () => {
+            expect(result).toBeTruthy();
+        });
+    });
 });
 describe('When I check the prop types for an invalid config', () => {
     describe('for the path', () => {
         let result;
         beforeEach(() => (result = checkPropTypes(MyComponent.propTypes, { config: { path: 666 } })));
-        describe('the prop type validation', () => it('fails', () => void expect(result).toBeTruthy()));
+        describe('the prop type validation', () => {
+            it('fails', () => {
+                expect(result).toBeTruthy();
+            });
+        });
     });
     describe('for the targeting', () => {
         let result;
         beforeEach(() => (result = checkPropTypes(MyComponent.propTypes, { config: { targeting: 'baz' } })));
-        describe('the prop type validation', () => it('fails', () => void expect(result).toBeTruthy()));
+        describe('the prop type validation', () => {
+            it('fails', () => {
+                expect(result).toBeTruthy();
+            });
+        });
     });
 });
 
@@ -124,9 +144,17 @@ describe('When I check the prop types with a price granularity', () => {
                     }))
             );
             if (expectToPass) {
-                describe('the prop type validation', () => it('passes', () => void expect(result).toBeUndefined()));
+                describe('the prop type validation', () => {
+                    it('passes', () => {
+                        expect(result).toBeUndefined();
+                    });
+                });
             } else {
-                describe('the prop type validation', () => it('fails', () => void expect(result).toBeTruthy()));
+                describe('the prop type validation', () => {
+                    it('fails', () => {
+                        expect(result).toBeTruthy();
+                    });
+                });
             }
         });
     }
@@ -223,9 +251,17 @@ describe('When I check the prop types with a size mapping', () => {
                     }))
             );
             if (expectToPass) {
-                describe('the prop type validation', () => it('passes', () => void expect(result).toBeUndefined()));
+                describe('the prop type validation', () => {
+                    it('passes', () => {
+                        expect(result).toBeUndefined();
+                    });
+                });
             } else {
-                describe('the prop type validation', () => it('fails', () => void expect(result).toBeTruthy()));
+                describe('the prop type validation', () => {
+                    it('fails', () => {
+                        expect(result).toBeTruthy();
+                    });
+                });
             }
         });
     }
@@ -359,9 +395,17 @@ describe('When I check the prop types with a prebid size config', () => {
                     }))
             );
             if (expectToPass) {
-                describe('the prop type validation', () => it('passes', () => void expect(result).toBeUndefined()));
+                describe('the prop type validation', () => {
+                    it('passes', () => {
+                        expect(result).toBeUndefined();
+                    });
+                });
             } else {
-                describe('the prop type validation', () => it('fails', () => void expect(result).toBeTruthy()));
+                describe('the prop type validation', () => {
+                    it('fails', () => {
+                        expect(result).toBeTruthy();
+                    });
+                });
             }
         });
     }
