@@ -125,6 +125,12 @@ export default class Advertising {
         this[setDefaultConfig]();
     }
 
+    resetSlot(id) {
+        if (window.pbjs[id]) {
+            window.pbjs[id] = false;
+        }
+    }
+
     // ---------- PRIVATE METHODS ----------
 
     [callAdserverSetup](slots) {

@@ -81,6 +81,7 @@ export default class AdvertisingProvider extends Component {
         const { advertising, shouldRefresh } = this.state;
         const data = {
             activate: advertising.activate.bind(this.state.advertising),
+            resetSlot: advertising.resetSlot.bind(this.state.advertising),
             active: this.props.active,
             shouldRefresh
         };

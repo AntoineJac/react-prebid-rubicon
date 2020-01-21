@@ -19,6 +19,13 @@ class AdvertisingSlot extends Component {
         }
     }
 
+    componentWillUnmount() {
+        const { active, id, resetSlot } = this.props;
+        if (active) {
+            resetSlot(id);
+        }
+    }
+
     render() {
         const { id, style, className, children } = this.props;
         return <div id={id} style={style} className={className} children={children} />;
@@ -33,6 +40,7 @@ AdvertisingSlot.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node,
     activate: PropTypes.func,
+    resetSlot: PropTypes.func,
     customEventHandlers: PropTypes.objectOf(PropTypes.func).isRequired
 };
 
