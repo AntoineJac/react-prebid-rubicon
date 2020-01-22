@@ -15,11 +15,17 @@
     "build": "npm run build:lib && npm run build:dist",
     "build:lib": "cross-env BABEL_ENV=cjs babel --out-dir lib src --ignore src/*.test.js,src/**/*.test.js",
     "build:dist": "webpack",
+    "prepublish": "in-publish && npm run build || not-in-publish",
     "eslint": "eslint 'src/**/*.js'",
     "prettier": "prettier 'src/**/*.js' --write",
     "deploy": "git add . && git commit -m 'new version' && git push origin master:deploy",
     "postBuild": "npm run prettier --write && npm run eslint --fix",
     "coveralls": "jest --coverage"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run eslint && npm run test"
+    }
   },
   "lint-staged": {
     "linters": {
@@ -86,6 +92,7 @@
     "eslint-plugin-prettier": "^2.7.0",
     "eslint-plugin-react": "^7.12.4",
     "husky": "^0.14.3",
+    "in-publish": "^2.0.0",
     "jest": "^24.9.0",
     "lint-staged": "^7.3.0",
     "prettier": "^1.18.2",
