@@ -41,9 +41,6 @@
     "transformIgnorePatterns": [
       "<rootDir>/node_modules/(?!@mt-testutils/expect-snapshot)"
     ],
-    "testEnvironmentOptions": {
-      "url": "http://www.rubiconproject.com/"
-    },
     "coverageThreshold": {
       "global": {
         "branches": 70,
@@ -55,9 +52,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AntoineJac/react-prebid-rubicon.git"
+    "url": "https://github.com/DomainGroupOSS/react-prebid-rubicon.git"
   },
-  "author": "Antoine Jacquemin <ajacquemin@rubiconproject.com>",
+  "author": "Frank Huang <ajacquemin@rubiconproject.com>",
   "license": "MIT",
   "peerDependencies": {
     "react": ">=16.3.0 <17.0.0"
