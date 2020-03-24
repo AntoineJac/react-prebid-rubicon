@@ -126,7 +126,7 @@ export default class Advertising {
     }
 
     resetSlot(id) {
-        if (window.pbjs[id]) {
+        if (window.pbjs && window.pbjs[id]) {
             window.pbjs[id] = false;
         }
     }
