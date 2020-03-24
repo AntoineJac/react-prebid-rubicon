@@ -140,7 +140,7 @@ export default class Advertising {
     }
 
     [callAdserverId](slots) {
-        const temp = slots[0].getSlotElementId();
+        const temp = slots[0] && slots[0].getSlotElementId && slots[0].getSlotElementId();
         if (window.pbjs[temp]) return;
         window.pbjs[temp] = true;
         window.googletag.pubads().refresh(slots);
@@ -175,7 +175,7 @@ export default class Advertising {
     }
 
     [teardownCustomEvents]() {
-        if (!this.config.customEvents) {
+        if (!(this.config && this.config.customEvents)) {
             return;
         }
         Object.keys(this.config.customEvents).forEach(customEventId =>
