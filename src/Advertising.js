@@ -141,7 +141,10 @@ export default class Advertising {
 
     [callAdserverId](slots) {
         const temp = slots[0] && slots[0].getSlotElementId && slots[0].getSlotElementId();
+        if (!temp) return;
+
         if (window.pbjs[temp]) return;
+
         window.pbjs[temp] = true;
         window.googletag.pubads().refresh(slots);
     }
