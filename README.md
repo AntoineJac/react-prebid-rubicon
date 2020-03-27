@@ -1,11 +1,5 @@
 **This repo is based on the (great job) done by Ebay on: https://github.com/technology-ebay-de/react-prebid**
 
-**As a Rubicon employee, I have adapted it to make it work with Rubicon demand manager product**
-
-**Do notice, it is NOT an official Rubicon product and Rubicon Project could not be liable for any use of this package**
-
-**Please contact me for any further details or help on this package: ajacquemin@rubiconproject.com**
-
 # react-prebid
 
 A JavaScript library for ad placements with [Prebid](http://prebid.org) header bidding in [React](https://reactjs.org) applications.
@@ -17,9 +11,6 @@ A JavaScript library for ad placements with [Prebid](http://prebid.org) header b
 * Ad slot components that get filled with creatives from the ad server when they mount to the DOM
 * Works well in single page applications with multiple routes
 * Suitable for server-side-rendering
-
-[![Build Status](https://travis-ci.org/AntoineJac/react-prebid-rubicon.svg?branch=master)](https://travis-ci.org/AntoineJac/react-prebid-rubicon)
-[![Coverage Status](https://coveralls.io/repos/github/AntoineJac/react-prebid-rubicon/badge.svg)](https://coveralls.io/github/AntoineJac/react-prebid-rubicon)
 
 ## Prerequisites
 
@@ -40,11 +31,11 @@ The demo uses the same test Prebid configuration as the
 
 You can find documentation on how to use this library in the project's wiki:
 
-* [Usage](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Usage)
-* [API](https://github.com/AntoineJac/react-prebid-rubicon/wiki/API)
-* [Configuration](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Configuration)
-* [Custom Events](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Custom-Events)
-* [Plugins](https://github.com/AntoineJac/react-prebid-rubicon/wiki/Plugins)
+* [Usage](https://github.com/technology-ebay-de/react-prebid/react-prebid-rubicon/wiki/Usage)
+* [API](https://github.com/technology-ebay-de/react-prebid/react-prebid-rubicon/wiki/API)
+* [Configuration](https://github.com/technology-ebay-de/react-prebid/react-prebid-rubicon/wiki/Configuration)
+* [Custom Events](https://github.com/technology-ebay-de/react-prebid/react-prebid-rubicon/wiki/Custom-Events)
+* [Plugins](https://github.com/technology-ebay-de/react-prebid/react-prebid-rubicon/wiki/Plugins)
 
 ## License
 

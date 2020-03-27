@@ -6,6 +6,7 @@ import { mount } from 'enzyme';
 import { config } from '../utils/testAdvertisingConfig';
 
 const mockActivate = spy();
+const mockResetSlot = spy();
 const mockSetup = spy();
 const mockTeardown = spy();
 const mockConstructor = spy();
@@ -31,6 +32,9 @@ jest.mock(
             }
             activate(...args) {
                 mockActivate(...args);
+            }
+            resetSlot(...args) {
+                mockResetSlot(...args);
             }
             setup(...args) {
                 mockSetup(...args);
@@ -87,6 +91,7 @@ describe('The AdvertisingProvider component', () => {
                     setConfig: mockSetConfig,
                     isConfigReady: mockIsConfigNotReady,
                     activate: mockActivate,
+                    resetSlot: mockResetSlot,
                     teardown: mockTeardown
                 }
             });
@@ -104,6 +109,7 @@ describe('The AdvertisingProvider component', () => {
                     setConfig: mockSetConfig,
                     isConfigReady: mockIsConfigReady,
                     activate: mockActivate,
+                    resetSlot: mockResetSlot,
                     teardown: mockTeardown
                 }
             });
@@ -133,6 +139,7 @@ describe('The AdvertisingProvider component', () => {
                 advertising: {
                     isConfigReady: mockIsConfigReady,
                     activate: mockActivate,
+                    resetSlot: mockResetSlot,
                     teardown: mockTeardown
                 }
             });
@@ -151,7 +158,9 @@ describe('The AdvertisingProvider component', () => {
         let component, componentWillUnmount;
         beforeEach(() => {
             component = mount(<AdvertisingProvider />);
-            component.setState({ advertising: { isConfigReady: mockIsConfigReady, activate: mockActivate } });
+            component.setState({
+                advertising: { isConfigReady: mockIsConfigReady, activate: mockActivate, resetSlot: mockResetSlot }
+            });
             componentWillUnmount = jest.spyOn(component.instance(), 'componentWillUnmount');
             component.unmount();
         });

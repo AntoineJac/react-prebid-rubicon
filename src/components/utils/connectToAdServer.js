@@ -3,8 +3,14 @@ import AdvertisingContext from '../../AdvertisingContext';
 
 export default Component => props => (
     <AdvertisingContext.Consumer>
-        {({ activate, active, shouldRefresh }) => (
-            <Component {...props} activate={activate} active={active} shouldRefresh={shouldRefresh} />
+        {({ activate, active, shouldRefresh, resetSlot }) => (
+            <Component
+                {...props}
+                activate={activate}
+                active={active}
+                shouldRefresh={shouldRefresh}
+                resetSlot={resetSlot}
+            />
         )}
     </AdvertisingContext.Consumer>
 );
