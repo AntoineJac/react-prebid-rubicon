@@ -6,8 +6,18 @@ export default PropTypes.shape({
     collapseEmptyDiv: PropTypes.arrayOf(PropTypes.bool),
     targeting: PropTypes.object,
     sizes: PropTypes.oneOfType([
-        PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.number)]),
-        PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.number)]))
+        PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.arrayOf(PropTypes.string),
+            PropTypes.arrayOf(PropTypes.number)
+        ]),
+        PropTypes.arrayOf(
+            PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.arrayOf(PropTypes.string),
+                PropTypes.arrayOf(PropTypes.number)
+            ])
+        )
     ]),
     sizeMappingName: PropTypes.string,
     prebid: PropTypes.arrayOf(
